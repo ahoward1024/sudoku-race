@@ -1,0 +1,81 @@
+:root {
+  --color-light-border: #888888;
+  --color-dark-border: #455496;
+}
+
+.table-style {
+  border-collapse: collapse;
+  border-spacing: 0;
+  position: fixed;
+  width: 80vh;
+  height: 80vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cell {
+  border-top: var(--color-light-border) solid 1px;
+  border-bottom: var(--color-light-border) solid 1px;
+  border-left: var(--color-light-border) solid 1px;
+  border-right:  var(--color-light-border) solid 1px;
+  vertical-align: middle;
+  text-align: center;
+  margin: 0;
+  padding: 0pt;
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 50pt;
+  height: 50pt;
+}
+
+.cell.tl {
+  border-top: var(--color-dark-border) solid 2px;
+  border-left: var(--color-dark-border) solid 2px;
+}
+
+.cell.tm {
+  border-top: var(--color-dark-border) solid 2px;
+}
+
+.cell.tr {
+  border-top: var(--color-dark-border) solid 2px;
+  border-right: var(--color-dark-border) solid 2px;
+}
+
+.cell.ml {
+  border-left: var(--color-dark-border) solid 2px;
+}
+
+.cell.mm {
+
+}
+
+.cell.mr {
+  border-right: var(--color-dark-border) solid 2px;
+}
+
+.cell.bl {
+  border-bottom: var(--color-dark-border) solid 2px;
+  border-left: var(--color-dark-border) solid 2px;
+}
+
+.cell.bm {
+  border-bottom: var(--color-dark-border) solid 2px;
+}
+
+.cell.br {
+  border-bottom: var(--color-dark-border) solid 2px;
+  border-right: var(--color-dark-border) solid 2px;
+}
+
+
+.cell-input {
+  border-collapse: collapse;
+  border: solid 0 #fff;
+  outline: none;
+  text-align: center;
+  width: 90%;
+  height: 90%;
+  font-size: 200%;
+}
