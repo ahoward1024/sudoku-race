@@ -48,15 +48,40 @@ class Board extends Component {
 class CellNoInput extends Component {
   render() {
     return(
-      <input className="cell-input" maxLength="1" value={this.props.value} readOnly="true"/>
+      <input
+        className="cell-input"
+        type="text"
+        maxLength="1"
+        value={this.props.value}
+        readOnly="true"
+      />
     );
   }
 }
 
 class CellInput extends Component {
+  constructor(props) {
+    super(props);
+    this.isNumber = this.isNumber.bind(this);
+  }
+
+  isNumber(event) {
+    var keycode = (event.which) ? event.which : event.keyCode;
+    if (keycode > 31 && (keycode < 48 || keycode > 57)) {
+      event.preventDefault();
+      return;
+    }
+  }
+
   render() {
     return(
-      <input className="cell-input" maxLength="1" defaultValue=""/>
+      <input
+        className="cell-input"
+        type="text"
+        maxLength="1"
+        defaultValue=""
+        onKeyPress={this.isNumber}
+      />
     );
   }
 }
