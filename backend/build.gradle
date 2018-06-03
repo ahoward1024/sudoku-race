@@ -1,6 +1,18 @@
+ext {
+  versions = [
+    dropWizard: '1.1.4',
+    lombok: '1.16.18',
+    junit: '4.12'
+  ]
+}
+
 buildscript {
   repositories {
     jcenter()
+    mavenCentral()
+  }
+  dependencies {
+    classpath "com.github.jengelman.gradle.plugins:shadow:2.0.1"
   }
 }
 
@@ -17,4 +29,21 @@ allprojects {
 project(':core') {
   apply plugin: 'application'
   mainClassName = 'CoreApplication'
+}
+
+project(':service') {
+  apply plugin: 'application'
+  apply plugin: 'com.github.johnrengelman.shadow'
+
+  mainClassName = 'SudokuRaceApplication'
+
+  shadowJar {
+    archiveName = 'sr.jar'
+    destinationDir projectDir
+  }
+
+  dependencies {
+    compile "io.dropwizard:dropwizard-core:$versions.dropWizard"
+    compile "org.projectlombok:lombok:$versions.lombok"
+  }
 }
