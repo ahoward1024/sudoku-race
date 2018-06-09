@@ -45,5 +45,6 @@ project(':service') {
   dependencies {
     compile "io.dropwizard:dropwizard-core:$versions.dropWizard"
     compile "org.projectlombok:lombok:$versions.lombok"
+    testCompile "junit:junit:$versions.junit"
   }
 }
