@@ -26,6 +26,36 @@ allprojects {
   group = 'io.aaronbatilo.sudokurace'
 }
 
+subprojects {
+  apply plugin: 'checkstyle'
+  apply plugin: 'findbugs'
+
+  checkstyle {
+    configFile rootProject.file('config/checkstyle/google_checks.xml')
+    toolVersion '8.10.1'
+    showViolations = true
+    maxWarnings = 0
+  }
+
+  findbugs {
+    ignoreFailures = false
+    effort = 'max'
+    reportLevel = 'high'
+    showProgress = true
+  }
+
+  tasks.withType(FindBugs) {
+    reports {
+      xml.enabled false
+      html.enabled true
+    }
+  }
+
+  test {
+    dependsOn 'checkstyleMain', 'checkstyleTest', 'findbugsMain', 'findbugsTest'
+  }
+}
+
 project(':core') {
   apply plugin: 'application'
   mainClassName = 'CoreApplication'
