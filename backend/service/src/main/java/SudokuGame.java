@@ -1,4 +1,5 @@
 import java.io.InputStream;
+import java.nio.charset.Charset;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
@@ -19,7 +20,7 @@ public class SudokuGame {
 
   static List<char[]> loadBoards() {
     InputStream inputStream = SudokuGame.class.getClassLoader().getResourceAsStream("puzzles.txt");
-    Scanner scanner = new Scanner(inputStream);
+    Scanner scanner = new Scanner(inputStream, "UTF-8");
     List<char[]> boards = new ArrayList<>();
     while (scanner.hasNextLine()) {
       String line = scanner.nextLine();
