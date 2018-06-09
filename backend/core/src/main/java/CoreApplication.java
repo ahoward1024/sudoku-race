@@ -4,9 +4,13 @@ public class CoreApplication {
   private static boolean validSet(char[] num) {
     int[] frequencies = new int[10];
     for (int i = 0; i < num.length; ++i) {
-      int n = num[i] - '0';
-      if (n < 0 || 10 < n) continue;
-      if (++frequencies[n] > 1) return false;
+      int number = num[i] - '0';
+      if (number < 0 || 10 < number) {
+        continue;
+      }
+      if (++frequencies[number] > 1) {
+        return false;
+      }
     }
     return true;
   }
@@ -17,12 +21,12 @@ public class CoreApplication {
 
   private static char[] extractCol(char[] board, int colIndex) {
     char[] col = new char[9];
-    int i = 0;
+    int idx = 0;
     int boardIndex = colIndex;
     while (boardIndex < 81) {
-      col[i] = board[boardIndex];
+      col[idx] = board[boardIndex];
       boardIndex += 9;
-      ++i;
+      ++idx;
     }
     return col;
   }
@@ -72,8 +76,12 @@ public class CoreApplication {
     return true;
   }
 
-  public static void main (String[] args) {
-    char[] board = "152489376739256841468371295387124659591763428246895713914637582625948137873512964".toCharArray();
+  /**
+   * Entry point of the program.
+   */
+  public static void main(String[] args) {
+    char[] board = ("15248937673925684146837129538712465959176342824689"
+      + "5713914637582625948137873512964").toCharArray();
     printBoard(board);
     System.out.println(validBoard(board));
   }
