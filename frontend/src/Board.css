@@ -5,7 +5,6 @@
 
 .table-style {
   border-collapse: collapse;
-  border-spacing: 0;
   position: fixed;
   width: 80vh;
   height: 80vh;
@@ -21,58 +20,57 @@
   border-right:  var(--color-light-border) solid 1px;
   vertical-align: middle;
   text-align: center;
-  margin: 0;
-  padding: 0pt;
   border-spacing: 0;
   border-collapse: collapse;
   width: 50pt;
   height: 50pt;
 }
 
-.cell.tl {
+.cell.c1 {
   border-top: var(--color-dark-border) solid 2px;
   border-left: var(--color-dark-border) solid 2px;
 }
 
-.cell.tm {
+.cell.c2 {
   border-top: var(--color-dark-border) solid 2px;
 }
 
-.cell.tr {
+.cell.c3 {
   border-top: var(--color-dark-border) solid 2px;
   border-right: var(--color-dark-border) solid 2px;
 }
 
-.cell.ml {
+.cell.c4 {
   border-left: var(--color-dark-border) solid 2px;
 }
 
-.cell.mm {
+.cell.c5 {
 
 }
 
-.cell.mr {
+.cell.c6 {
   border-right: var(--color-dark-border) solid 2px;
 }
 
-.cell.bl {
+.cell.c7 {
   border-bottom: var(--color-dark-border) solid 2px;
   border-left: var(--color-dark-border) solid 2px;
 }
 
-.cell.bm {
+.cell.c8 {
   border-bottom: var(--color-dark-border) solid 2px;
 }
 
-.cell.br {
+.cell.c9 {
   border-bottom: var(--color-dark-border) solid 2px;
   border-right: var(--color-dark-border) solid 2px;
 }
 
 
 .cell-input {
+  font-family: 'Lora', serif;
   border-collapse: collapse;
-  border: solid 0 #fff;
+  border: none;
   outline: none;
   text-align: center;
   width: 90%;

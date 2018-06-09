@@ -6,7 +6,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Board />
+        <h1 align="center">Sudoku Race</h1>
+        <Board/>
       </div>
     );
   }
