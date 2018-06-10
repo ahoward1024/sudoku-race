@@ -7,7 +7,11 @@ class App extends Component {
     return (
       <div>
         <h1 align="center">Sudoku Race</h1>
-        <Board/>
+        <div className="container">
+        <div className="square-div">
+          <Board/>
+        </div>
+        </div>
       </div>
     );
   }
