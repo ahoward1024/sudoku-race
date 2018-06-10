@@ -1,6 +1,11 @@
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
@@ -9,28 +14,25 @@ import lombok.RequiredArgsConstructor;
 @Path("/")
 @RequiredArgsConstructor
 public class RootResource {
-  static String generateGameSessionId() {
-    final StringBuilder sb = new StringBuilder();
-    for (int i = 0; i < 12; ++i) {
-      sb.append((char) ThreadLocalRandom.current().nextInt(97, 123));
-    }
-    return sb.toString();
-  }
+  private final ObjectMapper mapper;
+  private final GameStore store;
 
   @GET
   public Response root() {
-    return Response.ok("Hello world").build();
+    return Response.ok("Welcome to SudokuRace!").build();
   }
 
   @GET
   @Path("game.create")
-  public Response gameCreate() {
-    return Response.ok("New game").build();
+  public Response gameCreate() throws JsonProcessingException {
+    String newGame = mapper.writeValueAsString(store.createGame());
+    return Response.ok(newGame).build();
   }
 
-  @GET
-  @Path("game.join")
-  public Response gameJoin() {
-    return Response.ok("Joining game").build();
+  @POST
+  @Path("move.make")
+  public Response moveMake(MakeMove move) {
+    System.out.println(move);
+    return Response.ok().build();
   }
 }
