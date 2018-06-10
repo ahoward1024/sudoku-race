@@ -1,7 +1,7 @@
 import java.util.TreeMap;
 
 public class GameStore {
-  TreeMap<Integer, SudokuGame> gameStore = new TreeMap<>();
+  private final TreeMap<Integer, SudokuGame> gameStore = new TreeMap<>();
 
   /**
    * Create a new game session.
