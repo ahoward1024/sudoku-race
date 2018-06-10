@@ -34,6 +34,8 @@ subprojects {
     configFile rootProject.file('config/checkstyle/google_checks.xml')
     toolVersion '8.10.1'
     showViolations = true
+    ignoreFailures = false
+    maxErrors = 0
     maxWarnings = 0
   }
 
