@@ -1,3 +1,5 @@
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import io.dropwizard.setup.Environment;
 
 import lombok.Getter;
@@ -13,7 +15,10 @@ public class BaseResourceFactory {
       super(conf, env);
     }
 
+    private final ObjectMapper mapper = new ObjectMapper();
+    private final GameStore store = new GameStore();
+
     @Getter
-    private final RootResource rootResource = new RootResource();
+    private final RootResource rootResource = new RootResource(mapper, store);
   }
 }

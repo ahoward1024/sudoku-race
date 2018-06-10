@@ -52,7 +52,10 @@ public class CoreApplication {
     {60, 61, 62, 69, 70, 71, 78, 79, 80 }
   };
 
-  private static void printBoard(char[] board) {
+  /**
+   * Displays a sudoku board in a 9x9 grid.
+   */
+  public static void printBoard(char[] board) {
     for (int i = 0; i < 9; ++i) {
       for (int j = 0; j < 9; ++j) {
         System.out.print(board[i * 9 + j] + " ");
@@ -61,7 +64,10 @@ public class CoreApplication {
     }
   }
 
-  private static boolean validBoard(char[] board) {
+  /**
+   * Validates whether or not a board is possible.
+   */
+  public static boolean isValidBoard(char[] board) {
     for (int i = 0; i < 9; ++i) {
       if (!validSet(extractRow(board, i))) {
         return false;
@@ -83,6 +89,6 @@ public class CoreApplication {
     char[] board = ("15248937673925684146837129538712465959176342824689"
       + "5713914637582625948137873512964").toCharArray();
     printBoard(board);
-    System.out.println(validBoard(board));
+    System.out.println(isValidBoard(board));
   }
 }
