@@ -1,0 +1,45 @@
+version: 2
+jobs:
+  test_frontend:
+    docker:
+      - image: circleci/node:8.11.2-stretch
+    working_directory: ~/sudoku-race
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies{{ checksum "frontend/package-lock.json" }}
+            - v1-dependencies-
+      - run: cd frontend && npm install
+      - save_cache:
+          paths:
+            - ~/sudoku-race/frontend/node_modules
+          key: v1-dependencies-{{ checksum "frontend/package-lock.json" }}
+      - run: cd frontend && CI=1 npm test
+
+  test_backend:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    working_directory: ~/sudoku-race
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies{{ checksum "backend/build.gradle" }}
+            - v1-dependencies-
+      - run: cd backend && gradle wrapper
+      - run: cd backend && ./gradlew dependencies
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: v1-dependencies-{{ checksum "backend/build.gradle" }}
+      - run: cd backend && ./gradlew build
+
+      - store_artifacts:
+          path: backend/service/build/reports
+workflows:
+  version: 2
+  build:
+    jobs:
+      - test_frontend
+      - test_backend
