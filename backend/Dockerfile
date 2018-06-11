@@ -4,7 +4,7 @@ MAINTAINER Aaron Batilo aaronbatilo@gmail.com
 WORKDIR /source
 COPY . /source
 
-RUN ./gradlew test shadowJar
+RUN ./gradlew shadowJar
 
 FROM openjdk:8-jdk-alpine
 WORKDIR /app
