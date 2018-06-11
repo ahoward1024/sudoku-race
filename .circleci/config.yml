@@ -37,9 +37,34 @@ jobs:
 
       - store_artifacts:
           path: backend/service/build/reports
+
+  docker_build_backend:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: "Install aws cli"
+          command: |
+            curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+            unzip awscli-bundle.zip
+            sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+      - run:
+          name: "Log in to AWS ECR"
+          command: eval $(aws ecr get-login --no-include-email --region us-west-2)
+      - run:
+          name: "Build & push Docker image"
+          command: |
+            docker build -t $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/sudokurace:latest -t $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/sudokurace:$CIRCLE_SHA1 -f backend/Dockerfile backend
+            docker push $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/sudokurace:$CIRCLE_SHA1
+
 workflows:
   version: 2
   build:
     jobs:
       - test_frontend
       - test_backend
+      - docker_build_backend:
+          requires:
+            - test_backend
