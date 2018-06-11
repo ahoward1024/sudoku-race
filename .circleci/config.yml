@@ -68,3 +68,7 @@ workflows:
       - docker_build_backend:
           requires:
             - test_backend
+          filters:
+            branches:
+              only:
+                - master
