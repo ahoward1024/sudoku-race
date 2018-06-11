@@ -4,7 +4,17 @@ import './Board.css'
 class Board extends Component {
   constructor(props) {
     super(props);
-    this.state = {gameboard: [8,6,0,0,2,0,0,0,0,0,0,0,7,0,0,0,5,9,0,0,0,0,0,0,0,0,0,0,0,0,0,6,0,8,0,0,0,4,0,0,0,0,0,0,0,0,0,5,3,0,0,0,0,7,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,6,0,0,0,0,7,5,0,9,0,0,0]};
+    this.state = {board: ""};
+  }
+
+  componentDidMount() {
+    fetch('http://192.168.0.21:8080/game.create')
+      .then(resp => resp.json())
+      .then(json => json["board"].split(""))
+      .then(board => this.setState({ board }))
+      .catch(function(resp) {
+        console.log("Error getting response from server: " + resp)
+      })
   }
 
   render() {
@@ -14,8 +24,10 @@ class Board extends Component {
     for(var i = 0; i < 9; ++i) {
       var row = [];
       for(var j = 0; j < 9; ++j) {
-        var val = this.state.gameboard[pos];
-        if(val === 0) {
+        var val = this.state.board[pos];
+        // NOTE/FIXME(alex): Without (val === undefined) React will complain that the CellNoInput
+        // is an uncontrolled component that is being switched to a controlled component.
+        if(val === ' ' || val === undefined) {
           row.push(<td key={"c"+i+j} className={"cell c"+it}><CellInput/></td>);
         }
         else {
@@ -49,7 +61,7 @@ class CellNoInput extends Component {
   render() {
     return(
       <input
-        className="cell-input"
+        className="cell-input noinput"
         type="text"
         maxLength="1"
         value={this.props.value}

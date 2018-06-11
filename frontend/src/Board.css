@@ -6,8 +6,6 @@
 .table-style {
   border-collapse: collapse;
   position: fixed;
-  width: 80vh;
-  height: 80vh;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -22,8 +20,8 @@
   text-align: center;
   border-spacing: 0;
   border-collapse: collapse;
-  width: 50pt;
-  height: 50pt;
+  width: 50px;
+  height: 50px;
 }
 
 .cell.c1 {
@@ -66,14 +64,17 @@
   border-right: var(--color-dark-border) solid 2px;
 }
 
-
 .cell-input {
   font-family: 'Lora', serif;
   border-collapse: collapse;
   border: none;
   outline: none;
   text-align: center;
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
   font-size: 200%;
+}
+
+.cell-input.noinput {
+  background: lightgrey;
 }
