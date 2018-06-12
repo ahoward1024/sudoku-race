@@ -4,10 +4,10 @@ import './Board.css'
 class Board extends Component {
   constructor(props) {
     super(props);
-    this.state = {board: ""};
+    this.state = { board: "", width: 0, height: 0 };
   }
 
-  componentDidMount() {
+  componentDidMount(){
     fetch('http://192.168.0.21:8080/game.create')
       .then(resp => resp.json())
       .then(json => json["board"].split(""))
@@ -17,6 +17,7 @@ class Board extends Component {
       })
   }
 
+  
   render() {
     var rows = [];
     var pos = 0;
@@ -45,9 +46,13 @@ class Board extends Component {
       }
       rows.push(<tr key={"r"+i}>{row}</tr>);
     }
+    var style = {
+      width: this.props.width,
+      height: this.props.height
+    }
     return(
       <div>
-        <table className="table-style">
+        <table className="table-style" style={style}>
           <tbody className="cell">
             {rows}
           </tbody>
