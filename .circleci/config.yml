@@ -38,6 +38,9 @@ jobs:
       - store_artifacts:
           path: backend/service/build/reports
 
+      - store_test_results:
+          path: backend/service/build/test-results
+
   docker_build_backend:
     docker:
       - image: circleci/openjdk:8-jdk
