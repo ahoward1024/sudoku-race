@@ -29,6 +29,7 @@ allprojects {
 subprojects {
   apply plugin: 'checkstyle'
   apply plugin: 'findbugs'
+  apply plugin: 'jacoco'
 
   checkstyle {
     configFile rootProject.file('config/checkstyle/google_checks.xml')
@@ -53,8 +54,19 @@ subprojects {
     }
   }
 
+  jacocoTestCoverageVerification {
+    violationRules {
+      rule {
+        limit {
+          minimum = 0.40
+        }
+      }
+    }
+  }
+
   test {
     dependsOn 'checkstyleMain', 'checkstyleTest', 'findbugsMain', 'findbugsTest'
+    finalizedBy 'jacocoTestReport', 'jacocoTestCoverageVerification'
   }
 }
 
