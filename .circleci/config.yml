@@ -1,5 +1,22 @@
 version: 2
 jobs:
+  terraform_apply:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    working_directory: ~/sudoku-race
+    steps:
+      - checkout
+      - run:
+          name: "Apply Terraform plan"
+          command: |
+            curl "https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip" -o "terraform.zip"
+            unzip terraform.zip
+            ./terraform init -input=false
+            ./terraform plan -out=tfplan -input=false
+            ./terraform apply -input=false -auto-approve tfplan
+      - store_artifacts:
+          path: tfplan
+
   test_frontend:
     docker:
       - image: circleci/node:8.11.2-stretch
@@ -75,3 +92,7 @@ workflows:
             branches:
               only:
                 - master
+      - terraform_apply:
+          requires:
+            - test_frontend
+            - test_backend
