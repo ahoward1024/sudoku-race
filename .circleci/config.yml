@@ -30,6 +30,8 @@ jobs:
           key: v1-dependencies-{{ checksum "frontend/package-lock.json" }}
       - run: cd frontend && ./node_modules/eslint/bin/eslint.js --ext .js --ext .jsx .
       - run: cd frontend && CI=1 npm test
+      - store_artifacts:
+          path: frontend/coverage
 
   deploy_frontend:
     docker:
