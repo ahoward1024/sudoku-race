@@ -1,22 +1,5 @@
 version: 2
 jobs:
-  terraform_apply:
-    docker:
-      - image: circleci/openjdk:8-jdk
-    working_directory: ~/sudoku-race
-    steps:
-      - checkout
-      - run:
-          name: "Apply Terraform plan"
-          command: |
-            curl "https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip" -o "terraform.zip"
-            unzip terraform.zip
-            ./terraform init -input=false
-            ./terraform plan -out=tfplan.txt -input=false
-            ./terraform apply -input=false -auto-approve tfplan.txt
-      - store_artifacts:
-          path: tfplan
-
   test_frontend:
     docker:
       - image: circleci/node:8.11.2-stretch
@@ -33,6 +16,35 @@ jobs:
             - ~/sudoku-race/frontend/node_modules
           key: v1-dependencies-{{ checksum "frontend/package-lock.json" }}
       - run: cd frontend && CI=1 npm test
+
+  deploy_frontend:
+    docker:
+      - image: circleci/node:8.11.2-stretch
+    working_directory: ~/sudoku-race
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies{{ checksum "frontend/package-lock.json" }}
+            - v1-dependencies-
+      - run: cd frontend && npm install
+      - save_cache:
+          paths:
+            - ~/sudoku-race/frontend/node_modules
+          key: v1-dependencies-{{ checksum "frontend/package-lock.json" }}
+      - run: cd frontend && npm run-script build
+      - run:
+          name: "Install aws cli"
+          command: |
+            sudo apt-get update -qq && sudo apt-get install -y python-dev
+            curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+            unzip awscli-bundle.zip
+            sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+      - run:
+          name: "Sync optimized build to S3, invalidate CloudFront"
+          command: |
+            aws s3 sync frontend/build s3://www.sudokurace.io
+            aws cloudfront create-invalidation --distribution-id EGZ7RY9UXMOMT --paths "/*"
 
   test_backend:
     docker:
@@ -79,11 +91,31 @@ jobs:
             docker build -t $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/sudokurace:latest -t $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/sudokurace:$CIRCLE_SHA1 -f backend/Dockerfile backend
             docker push $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/sudokurace:$CIRCLE_SHA1
 
+  terraform_apply:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    working_directory: ~/sudoku-race
+    steps:
+      - checkout
+      - run:
+          name: "Apply Terraform plan"
+          command: |
+            curl "https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip" -o "terraform.zip"
+            unzip terraform.zip
+            ./terraform init -input=false
+            ./terraform plan -out=tfplan.txt -input=false
+            ./terraform apply -input=false -auto-approve tfplan.txt
+      - store_artifacts:
+          path: tfplan
+
 workflows:
   version: 2
   build:
     jobs:
       - test_frontend
+      - deploy_frontend:
+          requires:
+            - test_frontend
       - test_backend
       - docker_build_backend:
           requires:
