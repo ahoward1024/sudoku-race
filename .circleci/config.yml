@@ -116,6 +116,10 @@ workflows:
       - deploy_frontend:
           requires:
             - test_frontend
+          filters:
+            branches:
+              only:
+                - master
       - test_backend
       - docker_build_backend:
           requires:
@@ -128,3 +132,7 @@ workflows:
           requires:
             - test_frontend
             - test_backend
+          filters:
+            branches:
+              only:
+                - master
