@@ -150,6 +150,7 @@ workflows:
           requires:
             - test_frontend
             - test_backend
+            - docker_build_backend
           filters:
             branches:
               only:
