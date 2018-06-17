@@ -1,15 +1,13 @@
 import React, {Component} from 'react';
 import './Board.css';
-import Cell from './Cell';
+import InputCell from './InputCell';
+import NoInputCell from './NoInputCell';
 
 class Board extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-'board': '',
-'width': 0,
-'height': 0
-};
+    this.state = {'board': ''};
+    this.getCellValues = this.getCellValues.bind(this);
   }
 
   componentDidMount() {
@@ -22,46 +20,45 @@ class Board extends Component {
       });
   }
 
-  render() {
+  getCellValues() {
     const rows = [];
-    let pos = 0;
-    let it = 1;
-    for (let i = 0; i < 9; ++i) {
+    let it = 1,
+        pos = 0;
+    for (let perRow = 0; perRow < 9; perRow += 1) {
       const row = [];
-      for (let j = 0; j < 9; ++j) {
+      for (let perColumn = 0; perColumn < 9; perColumn += 1) {
         const val = this.state.board[pos];
         // NOTE/FIXME(alex): Without (val === undefined) React will complain that the CellNoInput
         // is an uncontrolled component that is being switched to a controlled component.
-        let read_only = true;
-        let cell_value = val;
         if (val === ' ' || val === undefined) {
-          read_only = false;
-          cell_value = '';
+          row.push(<td key={`c${perRow}${perColumn}`} className={`cell c${it}`}>
+                   <InputCell/></td>);
+        } else {
+          row.push(<td key={`c${perRow}${perColumn}`} className={`cell c${it}`}>
+                   <NoInputCell value={val}/></td>);
         }
-        row.push(<td key={`c${i}${j}`} className={`cell c${it}`}>
-                 <Cell value={cell_value} readOnly={read_only}/></td>);
-
         if (it % 3 === 0) {
           it -= 3;
         }
-        ++it;
-        ++pos;
+        it += 1;
+        pos += 1;
       }
       it += 3;
       if (it % 10 === 0) {
         it -= 9;
       }
-      rows.push(<tr key={`r${i}`}>{row}</tr>);
+      rows.push(<tr key={`r${perRow}`}>{row}</tr>);
     }
 
-    const style = {
-      'width': this.props.width,
-      'height': this.props.height
-    };
+    return rows;
+  }
 
-return (
+  render() {
+    const rows = this.getCellValues();
+
+    return (
       <div >
-        <table className="table-style" style={style}>
+        <table className="table-style">
           <tbody className="cell">{rows}</tbody>
         </table>
       </div>

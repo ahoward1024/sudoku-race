@@ -4,9 +4,6 @@ import Board from '../Board';
 import renderer from 'react-test-renderer';
 
 test('Test the Board component', () => {
-  const component = renderer.create(
-    <Board width="400" height="400"/>,
-  );
-  let tree = component.toJSON();
+  const tree = renderer.create(<Board width="400" height="400"/>).component.toJSON();
   expect(tree).toMatchSnapshot();
-})
+});

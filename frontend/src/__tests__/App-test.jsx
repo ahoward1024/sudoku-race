@@ -4,8 +4,6 @@ import App from '../App';
 import renderer from 'react-test-renderer';
 
 test('Test the full App function', () => {
-  const component = renderer.create(
-  );
-  let tree = component.toJSON();
+  const tree = renderer.create().component.toJSON();
   expect(tree).toMatchSnapshot();
-})
+});
