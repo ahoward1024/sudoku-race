@@ -45,6 +45,10 @@ resource "aws_autoscaling_group" "backend" {
     value = "backend-asg"
     propagate_at_launch = true
   }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_elb" "backend" {
@@ -58,6 +62,10 @@ resource "aws_elb" "backend" {
     instance_port = "${var.server_port}"
     instance_protocol = "http"
     ssl_certificate_id = "arn:aws:acm:us-west-2:717012417639:certificate/95a0de96-0eaa-4c61-8a24-80bac18c13e6"
+  }
+
+  lifecycle {
+    create_before_destroy = true
   }
 }
 
@@ -91,6 +99,10 @@ resource "aws_security_group" "elb" {
     to_port = 0
     protocol = "-1"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  lifecycle {
+    create_before_destroy = true
   }
 }
 
