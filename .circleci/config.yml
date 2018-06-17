@@ -28,6 +28,7 @@ jobs:
           paths:
             - ~/sudoku-race/frontend/node_modules
           key: v1-dependencies-{{ checksum "frontend/package-lock.json" }}
+      - run: cd frontend && ./node_modules/eslint/bin/eslint.js --ext .js --ext .jsx .
       - run: cd frontend && CI=1 npm test
 
   deploy_frontend:
