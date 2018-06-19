@@ -2,16 +2,12 @@ version: 2
 jobs:
   lint_git_commits:
     docker:
-      - image: circleci/openjdk:8-jdk
+      - image: python:3.6-stretch
     working_directory: ~/sudoku-race
     steps:
       - checkout
-      - run:
-          name: "Install gitlint"
-          command: |
-            sudo apt-get update -qq && sudo apt-get install -y python-dev python-pip
-            pip install gitlint
-      - run: ~/.local/bin/gitlint --commits 6c42184...HEAD
+      - run: pip install gitlint
+      - run: gitlint --commits 6c42184...HEAD
 
   test_frontend:
     docker:
