@@ -59,51 +59,6 @@ jobs:
             aws s3 sync frontend/build s3://www.sudokurace.io
             aws cloudfront create-invalidation --distribution-id EGZ7RY9UXMOMT --paths "/*"
 
-  test_backend:
-    docker:
-      - image: circleci/openjdk:8-jdk
-    working_directory: ~/sudoku-race
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies{{ checksum "backend/build.gradle" }}
-            - v1-dependencies-
-      - run: cd backend && gradle wrapper
-      - run: cd backend && ./gradlew dependencies
-      - save_cache:
-          paths:
-            - ~/.gradle
-          key: v1-dependencies-{{ checksum "backend/build.gradle" }}
-      - run: cd backend && ./gradlew build
-
-      - store_artifacts:
-          path: backend/service/build/reports
-
-      - store_test_results:
-          path: backend/service/build/test-results
-
-  docker_build_backend:
-    docker:
-      - image: circleci/openjdk:8-jdk
-    steps:
-      - checkout
-      - setup_remote_docker
-      - run:
-          name: "Install aws cli"
-          command: |
-            curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
-            unzip awscli-bundle.zip
-            sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
-      - run:
-          name: "Log in to AWS ECR"
-          command: eval $(aws ecr get-login --no-include-email --region us-west-2)
-      - run:
-          name: "Build & push Docker image"
-          command: |
-            docker build -t $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/sudokurace:latest -t $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/sudokurace:$CIRCLE_SHA1 -f backend/Dockerfile backend
-            docker push $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/sudokurace:$CIRCLE_SHA1
-
   terraform_apply:
     docker:
       - image: circleci/openjdk:8-jdk
@@ -137,21 +92,9 @@ workflows:
             branches:
               only:
                 - master
-      - test_backend:
-          requires:
-            - lint_git_commits
-      - docker_build_backend:
-          requires:
-            - test_backend
-          filters:
-            branches:
-              only:
-                - master
       - terraform_apply:
           requires:
             - test_frontend
-            - test_backend
-            - docker_build_backend
           filters:
             branches:
               only:
