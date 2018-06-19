@@ -4,6 +4,6 @@ exports[`Create an InputCell 1`] = `
 <input
   className="cell-input"
   maxLength="1"
-  onKeyPress={undefined}
+  onKeyPress={[Function]}
 />
 `;

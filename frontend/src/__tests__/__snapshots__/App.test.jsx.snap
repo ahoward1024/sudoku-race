@@ -22,7 +22,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -31,7 +31,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -40,7 +40,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -49,7 +49,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -58,7 +58,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -67,7 +67,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -76,7 +76,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -85,7 +85,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -94,7 +94,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
         </tr>
@@ -105,7 +105,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -114,7 +114,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -123,7 +123,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -132,7 +132,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -141,7 +141,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -150,7 +150,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -159,7 +159,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -168,7 +168,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -177,7 +177,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
         </tr>
@@ -188,7 +188,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -197,7 +197,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -206,7 +206,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -215,7 +215,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -224,7 +224,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -233,7 +233,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -242,7 +242,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -251,7 +251,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -260,256 +260,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-        </tr>
-        <tr>
-          <td
-            className="cell c1"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-          <td
-            className="cell c2"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-          <td
-            className="cell c3"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-          <td
-            className="cell c1"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-          <td
-            className="cell c2"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-          <td
-            className="cell c3"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-          <td
-            className="cell c1"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-          <td
-            className="cell c2"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-          <td
-            className="cell c3"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-        </tr>
-        <tr>
-          <td
-            className="cell c4"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-          <td
-            className="cell c5"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-          <td
-            className="cell c6"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-          <td
-            className="cell c4"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-          <td
-            className="cell c5"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-          <td
-            className="cell c6"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-          <td
-            className="cell c4"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-          <td
-            className="cell c5"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-          <td
-            className="cell c6"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-        </tr>
-        <tr>
-          <td
-            className="cell c7"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-          <td
-            className="cell c8"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-          <td
-            className="cell c9"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-          <td
-            className="cell c7"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-          <td
-            className="cell c8"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-          <td
-            className="cell c9"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-          <td
-            className="cell c7"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-          <td
-            className="cell c8"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
-            />
-          </td>
-          <td
-            className="cell c9"
-          >
-            <input
-              className="cell-input"
-              maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
         </tr>
@@ -520,7 +271,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -529,7 +280,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -538,7 +289,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -547,7 +298,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -556,7 +307,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -565,7 +316,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -574,7 +325,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -583,7 +334,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -592,7 +343,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
         </tr>
@@ -603,7 +354,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -612,7 +363,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -621,7 +372,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -630,7 +381,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -639,7 +390,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -648,7 +399,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -657,7 +408,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -666,7 +417,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -675,7 +426,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
         </tr>
@@ -686,7 +437,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -695,7 +446,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -704,7 +455,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -713,7 +464,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -722,7 +473,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -731,7 +482,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -740,7 +491,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -749,7 +500,7 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
             />
           </td>
           <td
@@ -758,7 +509,256 @@ exports[`Create an App 1`] = `
             <input
               className="cell-input"
               maxLength="1"
-              onKeyPress={undefined}
+              onKeyPress={[Function]}
+            />
+          </td>
+        </tr>
+        <tr>
+          <td
+            className="cell c1"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+          <td
+            className="cell c2"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+          <td
+            className="cell c3"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+          <td
+            className="cell c1"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+          <td
+            className="cell c2"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+          <td
+            className="cell c3"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+          <td
+            className="cell c1"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+          <td
+            className="cell c2"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+          <td
+            className="cell c3"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+        </tr>
+        <tr>
+          <td
+            className="cell c4"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+          <td
+            className="cell c5"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+          <td
+            className="cell c6"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+          <td
+            className="cell c4"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+          <td
+            className="cell c5"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+          <td
+            className="cell c6"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+          <td
+            className="cell c4"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+          <td
+            className="cell c5"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+          <td
+            className="cell c6"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+        </tr>
+        <tr>
+          <td
+            className="cell c7"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+          <td
+            className="cell c8"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+          <td
+            className="cell c9"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+          <td
+            className="cell c7"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+          <td
+            className="cell c8"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+          <td
+            className="cell c9"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+          <td
+            className="cell c7"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+          <td
+            className="cell c8"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
+            />
+          </td>
+          <td
+            className="cell c9"
+          >
+            <input
+              className="cell-input"
+              maxLength="1"
+              onKeyPress={[Function]}
             />
           </td>
         </tr>
