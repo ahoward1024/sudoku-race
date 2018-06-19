@@ -59,6 +59,15 @@ jobs:
             aws s3 sync frontend/build s3://www.sudokurace.io
             aws cloudfront create-invalidation --distribution-id EGZ7RY9UXMOMT --paths "/*"
 
+  lint_backend:
+    docker:
+      - image: python:3.6-stretch
+    working_directory: ~/sudoku-race
+    steps:
+      - checkout
+      - run: pip install flake8
+      - run: sh backend/tools/static_analysis.sh
+
   terraform_apply:
     docker:
       - image: circleci/openjdk:8-jdk
@@ -92,6 +101,7 @@ workflows:
             branches:
               only:
                 - master
+      - lint_backend
       - terraform_apply:
           requires:
             - test_frontend
