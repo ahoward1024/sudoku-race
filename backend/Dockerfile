@@ -1,4 +1,4 @@
-from python:3.6-stretch
+from python:3.6-alpine
 MAINTAINER Aaron AaronBatilo@gmail.com
 
 WORKDIR /app
