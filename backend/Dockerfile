@@ -5,11 +5,11 @@ WORKDIR /app
 
 # Copy Pipfiles first, then install, to create a Docker layer cache for faster
 # image builds
-COPY Pipfile /app/Pipfile
-COPY Pipfile.lock /app/Pipfile.lock
+COPY Pipfile .
+COPY Pipfile.lock .
 RUN pip install pipenv
 RUN pipenv install --system --deploy
 
-COPY . /app
+COPY . .
 
 CMD ["python", "runserver.py"]
