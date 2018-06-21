@@ -42,3 +42,7 @@ htmlcov/
 *,cover
 
 instance/
+
+# Nosetests
+cover
+coverage.xml
