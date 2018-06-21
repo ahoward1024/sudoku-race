@@ -61,8 +61,26 @@ jobs:
     working_directory: ~/sudoku-race
     steps:
       - checkout
-      - run: pip install flake8
-      - run: sh backend/tools/static_analysis.sh
+      - run: pip install pipenv
+      - run: cd backend && pipenv install --dev
+      - run: cd backend && pipenv run flake8 --show-source
+
+  test_backend:
+    docker:
+      - image: python:3.6-stretch
+    working_directory: ~/sudoku-race
+    steps:
+      - checkout
+      - run: pip install pipenv
+      - run: cd backend && pipenv install --dev
+      - run: cd backend && pipenv run nosetests --with-coverage --with-xunit --cover-html --cover-branches --cover-min-percentage=80 --cover-package=sudokurace -v tests/
+      - run: mkdir -p backend/test-results/nosetests && cp backend/nosetests.xml backend/test-results/nosetests/results.xml
+
+      - store_artifacts:
+          path: backend/cover
+
+      - store_test_results:
+          path: backend/test-results
 
   docker_build_backend:
     docker:
@@ -121,9 +139,12 @@ workflows:
       - lint_backend:
           requires:
             - lint_git_commits
-      - docker_build_backend:
+      - test_backend:
           requires:
             - lint_backend
+      - docker_build_backend:
+          requires:
+            - test_backend
           filters:
             branches:
               only:
