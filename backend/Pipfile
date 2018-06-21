@@ -11,6 +11,7 @@ flask = "*"
 "flake8-quotes" = "*"
 nose = "*"
 coverage = "*"
+nose-watch = "*"
 
 [requires]
 python_version = "3.6"
