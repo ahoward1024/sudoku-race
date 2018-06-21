@@ -3,18 +3,19 @@ import React, {Component} from 'react';
 class InputCell extends Component {
   constructor(props) {
     super(props);
-    this.isNumber = this.isNumber.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
-  isNumber(event) {
-    this.keycode = event.keyCode;
-    if (this.keycode > 31 && (this.keycode < 48 || this.keycode > 57)) {
-      event.preventDefault();
-
-      return false;
+  handleKeyPress(event) {
+    if (!InputCell.isNumber(this.event.key)) {
+      this.event.preventDefault();
     }
+  }
 
-    return true;
+  static isNumber(number) {
+    const pattern = /^\d+$/;
+
+    return pattern.test(number);
   }
 
   render() {
@@ -22,7 +23,7 @@ class InputCell extends Component {
       <input
         className="cell-input"
         maxLength="1"
-        onKeyPress={this.isNumber}
+        onKeyPress={this.handleKeyPress}
       />
     );
   }

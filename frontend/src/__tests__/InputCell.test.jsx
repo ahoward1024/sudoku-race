@@ -14,18 +14,12 @@ test('Create an InputCell', () => {
 
 test('Test if the sent keypress was not a number', () => {
   // Test case for keycode 100: d should return false
-  const event = new KeyboardEvent('keydown', {'keyCode': 100}),
-        result = shallow(<InputCell/>).instance()
-                 .isNumber(event);
-  document.dispatchEvent(event);
-  expect(result).toBe(false);
+  const event = new KeyboardEvent('keydown', {'key': 'd'});
+  expect(InputCell.isNumber(event.key)).toBe(false);
 });
 
-test('Test if the sent keypress was a number', () => {
-  // Test case for keycode 50: 2 should return true
-  const event = new KeyboardEvent('keydown', {'keyCode': 50}),
-        result = shallow(<InputCell/>).instance()
-                 .isNumber(event);
-  document.dispatchEvent(event);
-  expect(result).toBe(true);
+test('Test if the sent keypress is a number', () => {
+  // Test case for keycode 100: d should return false
+  const event = new KeyboardEvent('keydown', {'key': '1'});
+  expect(InputCell.isNumber(event.key)).toBe(true);
 });
