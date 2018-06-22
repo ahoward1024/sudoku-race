@@ -116,6 +116,7 @@ jobs:
             curl "https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip" -o "terraform.zip"
             unzip terraform.zip
             ./terraform init -input=false
+            ./terraform taint aws_autoscaling_group.backend
             ./terraform plan -out=tfplan.txt -input=false
             ./terraform apply -input=false -auto-approve tfplan.txt
       - store_artifacts:
