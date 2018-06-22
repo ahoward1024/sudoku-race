@@ -46,3 +46,4 @@ instance/
 # Nosetests
 cover
 coverage.xml
+nosetests.xml

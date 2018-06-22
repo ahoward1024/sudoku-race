@@ -1,1 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite name="nosetests" tests="2" errors="0" failures="0" skip="0"><testcase classname="tests.app_tests.AppTestCase" name="test_string_from_root_route" time="0.000"></testcase><testcase classname="tests.core_tests.CoreTestCase" name="test_is_valid_set" time="0.000"></testcase></testsuite>

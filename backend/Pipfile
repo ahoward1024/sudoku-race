@@ -9,9 +9,10 @@ flask = "*"
 [dev-packages]
 "flake8" = "*"
 "flake8-quotes" = "*"
-nose = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-watch = "*"
 coverage = "*"
-nose-watch = "*"
 
 [requires]
 python_version = "3.6"
