@@ -5,7 +5,7 @@ class InputCell extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      'position': this.props.position,
+      'index': this.props.index,
       'size': this.props.size,
       'value': this.props.value
     };
@@ -36,7 +36,7 @@ class InputCell extends Component {
 }
 
 InputCell.propTypes = {
-  'position': PropTypes.position,
+  'index': PropTypes.string,
   'size': PropTypes.string,
   'value': PropTypes.string
 };

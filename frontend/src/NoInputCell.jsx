@@ -5,7 +5,7 @@ class NoInputCell extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      'position': this.props.position,
+      'index': this.props.index,
       'size': this.props.size,
       'value': this.props.value
     };
@@ -24,7 +24,7 @@ class NoInputCell extends Component {
 }
 
 NoInputCell.propTypes = {
-  'position': PropTypes.string,
+  'index': PropTypes.string,
   'size': PropTypes.string,
   'value': PropTypes.string
 };
