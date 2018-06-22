@@ -2,16 +2,12 @@ version: 2
 jobs:
   lint_git_commits:
     docker:
-      - image: circleci/openjdk:8-jdk
+      - image: python:3.6-stretch
     working_directory: ~/sudoku-race
     steps:
       - checkout
-      - run:
-          name: "Install gitlint"
-          command: |
-            sudo apt-get update -qq && sudo apt-get install -y python-dev python-pip
-            pip install gitlint
-      - run: ~/.local/bin/gitlint --commits 6c42184...HEAD
+      - run: pip install gitlint
+      - run: gitlint --commits 6c42184...HEAD
 
   test_frontend:
     docker:
@@ -61,27 +57,21 @@ jobs:
 
   test_backend:
     docker:
-      - image: circleci/openjdk:8-jdk
+      - image: python:3.6-stretch
     working_directory: ~/sudoku-race
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies{{ checksum "backend/build.gradle" }}
-            - v1-dependencies-
-      - run: cd backend && gradle wrapper
-      - run: cd backend && ./gradlew dependencies
-      - save_cache:
-          paths:
-            - ~/.gradle
-          key: v1-dependencies-{{ checksum "backend/build.gradle" }}
-      - run: cd backend && ./gradlew build
+      - run: pip install pipenv
+      - run: cd backend && pipenv install --dev
+      - run: cd backend && pipenv run flake8 --show-source
+      - run: cd backend && pipenv run pytest --cov-report html --junit-xml=coverage.xml --cov-branch --cov-fail-under=80 -v --cov=sudokurace tests/
+      - run: mkdir -p backend/test-results/pytest && cp backend/coverage.xml backend/test-results/pytest/results.xml
 
       - store_artifacts:
-          path: backend/service/build/reports
+          path: backend/htmlcov
 
       - store_test_results:
-          path: backend/service/build/test-results
+          path: backend/test-results
 
   docker_build_backend:
     docker:
@@ -150,8 +140,6 @@ workflows:
       - terraform_apply:
           requires:
             - test_frontend
-            - test_backend
-            - docker_build_backend
           filters:
             branches:
               only:

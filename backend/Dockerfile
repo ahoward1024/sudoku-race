@@ -1,14 +1,19 @@
-FROM openjdk:8-jdk
-MAINTAINER Aaron Batilo aaronbatilo@gmail.com
+from python:3.6-stretch
+MAINTAINER Aaron AaronBatilo@gmail.com
 
-WORKDIR /source
-COPY . /source
+# We need gcc to build ujson
+RUN apt-get update && apt-get upgrade -y && apt-get install -y build-essential
 
-RUN ./gradlew shadowJar
-
-FROM openjdk:8-jdk-alpine
 WORKDIR /app
-COPY --from=0 /source/service/sr.jar /source/service/dev.yaml ./
 
-CMD java -jar sr.jar server dev.yaml
-EXPOSE 8080
+# Copy Pipfiles first, then install, to create a Docker layer cache for faster
+# image builds
+COPY Pipfile .
+COPY Pipfile.lock .
+RUN pip install pipenv
+RUN pipenv install --system --deploy
+
+COPY . .
+
+EXPOSE 8000
+CMD ["python", "runserver.py"]
