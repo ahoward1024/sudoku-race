@@ -6,7 +6,10 @@ import NoInputCell from './NoInputCell';
 class Board extends Component {
   constructor(props) {
     super(props);
-    this.state = {'board': ''};
+    this.state = {
+      'board': '',
+      'gameid': ''
+    };
     this.getCellValues = this.getCellValues.bind(this);
   }
 
@@ -27,15 +30,15 @@ class Board extends Component {
     for (let perRow = 0; perRow < 9; perRow += 1) {
       const row = [];
       for (let perColumn = 0; perColumn < 9; perColumn += 1) {
-        const val = this.state.board[pos];
+        const value = this.state.board[pos];
         // NOTE/FIXME(alex): Without (val === undefined) React will complain that the CellNoInput
         // is an uncontrolled component that is being switched to a controlled component.
-        if (val === ' ' || val === undefined) {
-          row.push(<td key={`c${perRow}${perColumn}`} className={`cell c${it}`}>
-                   <InputCell/></td>);
+        if (value === ' ') {
+          row.push(<td key={`c${perRow}${perColumn}`} className={`cell ${it}`}>
+                   <InputCell value={`${value}`} position={`${pos}`}/></td>);
         } else {
-          row.push(<td key={`c${perRow}${perColumn}`} className={`cell c${it}`}>
-                   <NoInputCell value={val}/></td>);
+          row.push(<td key={`c${perRow}${perColumn}`} className={`cell ${it}`}>
+                   <NoInputCell value={`${value}`} position={`${pos}`}/></td>);
         }
         if (it % 3 === 0) {
           it -= 3;

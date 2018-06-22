@@ -3,6 +3,11 @@ import React, {Component} from 'react';
 class InputCell extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      'position': this.props.position,
+      'size': this.props.size,
+      'value': this.props.value
+    };
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
@@ -28,5 +33,11 @@ class InputCell extends Component {
     );
   }
 }
+
+InputCell.propTypes = {
+  'position': PropTypes.position,
+  'size': PropTypes.string,
+  'value': PropTypes.string
+};
 
 export default InputCell;
