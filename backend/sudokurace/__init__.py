@@ -1,8 +1,11 @@
 #!/usr/bin/env python3.6
-from flask import Flask
+from sanic import Sanic
 
-app = Flask(__name__, instance_relative_config=True)
-app.config.from_object('config')
-app.config.from_pyfile('config.py', silent=True)
+app = Sanic()
+app.config.from_pyfile('config.py')
+try:
+    app.config.from_pyfile('instance/config.py')
+except IOError as e:
+    ...
 
 from . import views  # noqa

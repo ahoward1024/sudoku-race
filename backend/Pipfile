@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "*"
+sanic = "*"
 
 [dev-packages]
 "flake8" = "*"
@@ -13,6 +13,7 @@ pytest = "*"
 pytest-cov = "*"
 pytest-watch = "*"
 coverage = "*"
+aiohttp = "*"
 
 [requires]
 python_version = "3.6"

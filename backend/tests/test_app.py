@@ -1,5 +1,6 @@
-from sudokurace.views import index
+from sudokurace import app
 
 
 def test_string_from_root_route():
-    assert 'Welcome to SudokuRace' == index.root()
+    request, response = app.test_client.get('/')
+    assert 'Welcome to SudokuRace' == response.text
