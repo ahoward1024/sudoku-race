@@ -7,7 +7,7 @@ CORS(app)
 app.config.from_pyfile('config.py')
 try:
     app.config.from_pyfile('instance/config.py')
-except IOError as e:
+except IOError as e:  # pragma: no cover
     ...
 
 from . import views  # noqa
