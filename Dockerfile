@@ -20,7 +20,16 @@ RUN npm run-script build
 WORKDIR /app
 COPY /frontend/build /app/static/
 RUN mv /app/static/static/* /app/static/ && rm -rf /app/static/static
-RUN mv /app/static/service-worker.js /app/
+
+# Multi-stage build, so that our final container doesn't include node_modules
+# or the installed Node.js binaries
+FROM python:3.6-stretch
+
+# We need gcc to build ujson
+RUN apt-get update && apt-get upgrade -y && apt-get install -y build-essential
+
+WORKDIR /app
+COPY --from=0 /app /app
 
 # Copy Pipfiles first, then install, to create a Docker layer cache for faster
 # image builds
