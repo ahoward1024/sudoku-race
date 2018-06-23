@@ -91,8 +91,7 @@ jobs:
       - run:
           name: "Build & push Docker image"
           command: |
-            docker build -t $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/sudokurace:latest -t $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/sudokurace:$CIRCLE_SHA1 -f backend/Dockerfile backend
-            docker push $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/sudokurace:latest
+            docker build -t $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/sudokurace:$CIRCLE_SHA1 -f backend/Dockerfile backend
             docker push $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/sudokurace:$CIRCLE_SHA1
 
   terraform_apply:
@@ -104,6 +103,7 @@ jobs:
       - run:
           name: "Apply Terraform plan"
           command: |
+            export TF_VAR_tag=$CIRCLE_SHA1
             curl "https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip" -o "terraform.zip"
             unzip terraform.zip
             ./terraform init -input=false

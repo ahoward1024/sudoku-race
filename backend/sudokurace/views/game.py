@@ -8,5 +8,6 @@ from sanic.response import json
 async def root(req):
     return json({
         'id': 0,
-        'board': ' 5248937673925684146837129538712465959176342824689'
+        'board': ('    735     6   9486 4     34   71             52   '
+                '87     4 3297   8     413    ')
     })
