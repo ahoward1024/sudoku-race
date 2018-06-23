@@ -10,4 +10,8 @@ try:
 except IOError as e:  # pragma: no cover
     ...
 
+app.static('/', './static/index.html')
+app.static('/static', './static')
+app.static('/service-worker.js', 'static/service-worker.js')
+
 from . import views  # noqa
