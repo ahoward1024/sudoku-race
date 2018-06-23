@@ -46,6 +46,7 @@ rules:
       - getInitialState
       - render
       - shouldComponentUpdate
+      - handleKeyPress
   comma-dangle: error
   comma-spacing:
     - error

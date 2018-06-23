@@ -13,15 +13,19 @@ class InputCell extends Component {
   }
 
   handleKeyPress(event) {
-    if (!InputCell.isNumber(this.event.key)) {
-      this.event.preventDefault();
+    if (!InputCell.isValidInput(event.key)) {
+      event.preventDefault();
     }
   }
 
-  static isNumber(number) {
-    const pattern = /^\d+$/;
+  static isValidInput(input) {
+    if (input.length > 1) {
 
-    return pattern.test(number);
+      return false;
+    }
+    const pattern = /^[1-9]/;
+
+    return pattern.test(input);
   }
 
   render() {

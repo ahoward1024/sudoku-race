@@ -15,11 +15,23 @@ test('Create an InputCell', () => {
 test('Test if the sent keypress was not a number', () => {
   // Test case for keycode 100: d should return false
   const event = new KeyboardEvent('keydown', {'key': 'd'});
-  expect(InputCell.isNumber(event.key)).toBe(false);
+  expect(InputCell.isValidInput(event.key)).toBe(false);
+});
+
+test('Test if the sent keypress was greater than a single digit', () => {
+  // Test case for keycode 100: d should return false
+  const event = new KeyboardEvent('keydown', {'key': '12'});
+  expect(InputCell.isValidInput(event.key)).toBe(false);
+});
+
+test('Test if the sent keypress was 0 (outside of possible move in sudoku)', () => {
+  // Test case for keycode 100: d should return false
+  const event = new KeyboardEvent('keydown', {'key': '0'});
+  expect(InputCell.isValidInput(event.key)).toBe(false);
 });
 
 test('Test if the sent keypress is a number', () => {
   // Test case for keycode 100: d should return false
   const event = new KeyboardEvent('keydown', {'key': '1'});
-  expect(InputCell.isNumber(event.key)).toBe(true);
+  expect(InputCell.isValidInput(event.key)).toBe(true);
 });
