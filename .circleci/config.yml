@@ -46,7 +46,7 @@ jobs:
 
   docker_build:
     docker:
-      - image: circleci/openjdk:8-jdk
+      - image: python:3.6-stretch
     steps:
       - checkout
       - setup_remote_docker
