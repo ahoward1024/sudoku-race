@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Create a Board 1`] = `
+exports[`Create a board 1`] = `
 <div>
   <table
     className="table-style"
@@ -14,8 +14,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -23,8 +23,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -32,8 +32,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -41,8 +41,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -50,8 +50,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -59,8 +59,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -68,8 +68,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -77,8 +77,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -86,8 +86,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
       </tr>
@@ -97,8 +97,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -106,8 +106,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -115,8 +115,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -124,8 +124,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -133,8 +133,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -142,8 +142,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -151,8 +151,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -160,8 +160,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -169,8 +169,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
       </tr>
@@ -180,8 +180,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -189,8 +189,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -198,8 +198,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -207,8 +207,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -216,8 +216,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -225,8 +225,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -234,8 +234,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -243,8 +243,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -252,257 +252,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-      </tr>
-      <tr>
-        <td
-          className="cell c1"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-        <td
-          className="cell c2"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-        <td
-          className="cell c3"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-        <td
-          className="cell c1"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-        <td
-          className="cell c2"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-        <td
-          className="cell c3"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-        <td
-          className="cell c1"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-        <td
-          className="cell c2"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-        <td
-          className="cell c3"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-      </tr>
-      <tr>
-        <td
-          className="cell c4"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-        <td
-          className="cell c5"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-        <td
-          className="cell c6"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-        <td
-          className="cell c4"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-        <td
-          className="cell c5"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-        <td
-          className="cell c6"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-        <td
-          className="cell c4"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-        <td
-          className="cell c5"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-        <td
-          className="cell c6"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-      </tr>
-      <tr>
-        <td
-          className="cell c7"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-        <td
-          className="cell c8"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-        <td
-          className="cell c9"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-        <td
-          className="cell c7"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-        <td
-          className="cell c8"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-        <td
-          className="cell c9"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-        <td
-          className="cell c7"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-        <td
-          className="cell c8"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
-          />
-        </td>
-        <td
-          className="cell c9"
-        >
-          <input
-            className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
       </tr>
@@ -512,8 +263,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -521,8 +272,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -530,8 +281,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -539,8 +290,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -548,8 +299,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -557,8 +308,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -566,8 +317,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -575,8 +326,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -584,8 +335,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
       </tr>
@@ -595,8 +346,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -604,8 +355,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -613,8 +364,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -622,8 +373,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -631,8 +382,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -640,8 +391,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -649,8 +400,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -658,8 +409,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -667,8 +418,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
       </tr>
@@ -678,8 +429,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -687,8 +438,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -696,8 +447,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -705,8 +456,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -714,8 +465,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -723,8 +474,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -732,8 +483,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -741,8 +492,8 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
-            maxLength="1"
-            onKeyPress={[Function]}
+            onChange={[Function]}
+            value=""
           />
         </td>
         <td
@@ -750,8 +501,1858 @@ exports[`Create a Board 1`] = `
         >
           <input
             className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="cell c1"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c2"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c3"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c1"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c2"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c3"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c1"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c2"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c3"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="cell c4"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c5"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c6"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c4"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c5"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c6"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c4"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c5"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c6"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="cell c7"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c8"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c9"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c7"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c8"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c9"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c7"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c8"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c9"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`Create a board 2`] = `
+<div>
+  <table
+    className="table-style"
+  >
+    <tbody
+      className="cell"
+    >
+      <tr>
+        <td
+          className="cell c1"
+        >
+          <input
+            className="cell-input noinput"
             maxLength="1"
-            onKeyPress={[Function]}
+            readOnly="true"
+            value="1"
+          />
+        </td>
+        <td
+          className="cell c2"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="5"
+          />
+        </td>
+        <td
+          className="cell c3"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="2"
+          />
+        </td>
+        <td
+          className="cell c1"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="4"
+          />
+        </td>
+        <td
+          className="cell c2"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="8"
+          />
+        </td>
+        <td
+          className="cell c3"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="9"
+          />
+        </td>
+        <td
+          className="cell c1"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="3"
+          />
+        </td>
+        <td
+          className="cell c2"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="7"
+          />
+        </td>
+        <td
+          className="cell c3"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="6"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="cell c4"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="7"
+          />
+        </td>
+        <td
+          className="cell c5"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="3"
+          />
+        </td>
+        <td
+          className="cell c6"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="9"
+          />
+        </td>
+        <td
+          className="cell c4"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="2"
+          />
+        </td>
+        <td
+          className="cell c5"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="5"
+          />
+        </td>
+        <td
+          className="cell c6"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="6"
+          />
+        </td>
+        <td
+          className="cell c4"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="8"
+          />
+        </td>
+        <td
+          className="cell c5"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="4"
+          />
+        </td>
+        <td
+          className="cell c6"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="1"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="cell c7"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="4"
+          />
+        </td>
+        <td
+          className="cell c8"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="6"
+          />
+        </td>
+        <td
+          className="cell c9"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="8"
+          />
+        </td>
+        <td
+          className="cell c7"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="3"
+          />
+        </td>
+        <td
+          className="cell c8"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="7"
+          />
+        </td>
+        <td
+          className="cell c9"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="1"
+          />
+        </td>
+        <td
+          className="cell c7"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="2"
+          />
+        </td>
+        <td
+          className="cell c8"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="9"
+          />
+        </td>
+        <td
+          className="cell c9"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="5"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="cell c1"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="3"
+          />
+        </td>
+        <td
+          className="cell c2"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="8"
+          />
+        </td>
+        <td
+          className="cell c3"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="7"
+          />
+        </td>
+        <td
+          className="cell c1"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="1"
+          />
+        </td>
+        <td
+          className="cell c2"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="2"
+          />
+        </td>
+        <td
+          className="cell c3"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="4"
+          />
+        </td>
+        <td
+          className="cell c1"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="6"
+          />
+        </td>
+        <td
+          className="cell c2"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="5"
+          />
+        </td>
+        <td
+          className="cell c3"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="9"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="cell c4"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="5"
+          />
+        </td>
+        <td
+          className="cell c5"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="9"
+          />
+        </td>
+        <td
+          className="cell c6"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="1"
+          />
+        </td>
+        <td
+          className="cell c4"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="7"
+          />
+        </td>
+        <td
+          className="cell c5"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="6"
+          />
+        </td>
+        <td
+          className="cell c6"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="3"
+          />
+        </td>
+        <td
+          className="cell c4"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="4"
+          />
+        </td>
+        <td
+          className="cell c5"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="2"
+          />
+        </td>
+        <td
+          className="cell c6"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="8"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="cell c7"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="2"
+          />
+        </td>
+        <td
+          className="cell c8"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="4"
+          />
+        </td>
+        <td
+          className="cell c9"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="6"
+          />
+        </td>
+        <td
+          className="cell c7"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="8"
+          />
+        </td>
+        <td
+          className="cell c8"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="9"
+          />
+        </td>
+        <td
+          className="cell c9"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="5"
+          />
+        </td>
+        <td
+          className="cell c7"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="7"
+          />
+        </td>
+        <td
+          className="cell c8"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="1"
+          />
+        </td>
+        <td
+          className="cell c9"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="3"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="cell c1"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="9"
+          />
+        </td>
+        <td
+          className="cell c2"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="1"
+          />
+        </td>
+        <td
+          className="cell c3"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="4"
+          />
+        </td>
+        <td
+          className="cell c1"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="6"
+          />
+        </td>
+        <td
+          className="cell c2"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="3"
+          />
+        </td>
+        <td
+          className="cell c3"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="7"
+          />
+        </td>
+        <td
+          className="cell c1"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="5"
+          />
+        </td>
+        <td
+          className="cell c2"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="8"
+          />
+        </td>
+        <td
+          className="cell c3"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="2"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="cell c4"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="6"
+          />
+        </td>
+        <td
+          className="cell c5"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="2"
+          />
+        </td>
+        <td
+          className="cell c6"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="5"
+          />
+        </td>
+        <td
+          className="cell c4"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="9"
+          />
+        </td>
+        <td
+          className="cell c5"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="4"
+          />
+        </td>
+        <td
+          className="cell c6"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="8"
+          />
+        </td>
+        <td
+          className="cell c4"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="1"
+          />
+        </td>
+        <td
+          className="cell c5"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="3"
+          />
+        </td>
+        <td
+          className="cell c6"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="7"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="cell c7"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="8"
+          />
+        </td>
+        <td
+          className="cell c8"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="7"
+          />
+        </td>
+        <td
+          className="cell c9"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="3"
+          />
+        </td>
+        <td
+          className="cell c7"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="5"
+          />
+        </td>
+        <td
+          className="cell c8"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="1"
+          />
+        </td>
+        <td
+          className="cell c9"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="2"
+          />
+        </td>
+        <td
+          className="cell c7"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="9"
+          />
+        </td>
+        <td
+          className="cell c8"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="6"
+          />
+        </td>
+        <td
+          className="cell c9"
+        >
+          <input
+            className="cell-input noinput"
+            maxLength="1"
+            readOnly="true"
+            value="4"
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`Create an empty Board 1`] = `
+<div>
+  <table
+    className="table-style"
+  >
+    <tbody
+      className="cell"
+    >
+      <tr>
+        <td
+          className="cell c1"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c2"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c3"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c1"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c2"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c3"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c1"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c2"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c3"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="cell c4"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c5"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c6"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c4"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c5"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c6"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c4"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c5"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c6"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="cell c7"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c8"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c9"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c7"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c8"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c9"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c7"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c8"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c9"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="cell c1"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c2"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c3"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c1"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c2"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c3"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c1"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c2"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c3"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="cell c4"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c5"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c6"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c4"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c5"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c6"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c4"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c5"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c6"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="cell c7"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c8"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c9"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c7"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c8"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c9"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c7"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c8"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c9"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="cell c1"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c2"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c3"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c1"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c2"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c3"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c1"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c2"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c3"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="cell c4"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c5"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c6"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c4"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c5"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c6"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c4"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c5"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c6"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+      </tr>
+      <tr>
+        <td
+          className="cell c7"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c8"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c9"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c7"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c8"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c9"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c7"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c8"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
+          />
+        </td>
+        <td
+          className="cell c9"
+        >
+          <input
+            className="cell-input"
+            onChange={[Function]}
+            value=""
           />
         </td>
       </tr>
