@@ -23,7 +23,7 @@ resource "aws_launch_configuration" "backend" {
   user_data = <<-EOF
               #!/bin/sh
               eval $(sudo aws ecr get-login --no-include-email --region us-west-2)
-              sudo docker run --restart always -d -p"${var.server_port}":8000 717012417639.dkr.ecr.us-west-2.amazonaws.com/sudokurace:prod
+              sudo docker run --restart always -d -p"${var.server_port}":8000 717012417639.dkr.ecr.us-west-2.amazonaws.com/sudokurace:latest
               EOF
 
   lifecycle {
