@@ -1,8 +1,0 @@
-__pycache__/
-htmlcov/
-instance/
-
-Dockerfile
-coverage.xml
-
-*.pyc

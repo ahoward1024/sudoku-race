@@ -1,2 +1,2 @@
 #!/usr/bin/env python3.6
-from . import index, game  # noqa
+from . import game  # noqa
