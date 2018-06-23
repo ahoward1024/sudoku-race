@@ -46,7 +46,6 @@ rules:
       - getInitialState
       - render
       - shouldComponentUpdate
-      - handleKeyPress
   comma-dangle: error
   comma-spacing:
     - error
@@ -217,8 +216,12 @@ rules:
   object-curly-spacing: error
   object-property-newline: error
   object-shorthand: error
-  one-var: error
-  one-var-declaration-per-line: error
+  one-var:
+    - error
+    - never
+  one-var-declaration-per-line:
+    - error
+    - initializations
   operator-assignment: error
   operator-linebreak: error
   padded-blocks: 'off'

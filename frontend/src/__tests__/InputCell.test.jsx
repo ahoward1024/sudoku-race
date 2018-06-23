@@ -18,8 +18,8 @@ test('Create an InputCell', () => {
 });
 
 test('Changing InputCell updates state', () => {
-  const event = {'target': {'value': '2'}},
-        wrapper = shallow(<InputCell value="1"/>);
+  const event = {'target': {'value': '2'}};
+  const wrapper = shallow(<InputCell value="1"/>);
   expect(wrapper.state('value')).toBe('1');
   wrapper.find('input').simulate('change', event);
   expect(wrapper.state('value')).toBe('2');

@@ -13,8 +13,8 @@ test('Create an empty Board', () => {
 
 test('Create a board', () => {
   const fullBoard = '15248937673925684146837129538712465959176342824689' +
-    '5713914637582625948137873512964',
-        wrapper = shallow(<Board/>);
+    '5713914637582625948137873512964';
+  const wrapper = shallow(<Board/>);
 
   expect(renderer.create(wrapper).toJSON()).toMatchSnapshot();
   wrapper.setState({'board': fullBoard});

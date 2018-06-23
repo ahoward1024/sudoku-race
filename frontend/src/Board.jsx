@@ -24,11 +24,11 @@ class Board extends Component {
 
   static parseBoard(board) {
     // First load of the board has no state
-    const isOnFirstLoad = board === '',
-          rows = [];
+    const isOnFirstLoad = board === '';
+    const rows = [];
 
-    let index = 0,
-        it = 1;
+    let index = 0;
+    let it = 1;
     for (let perRow = 0; perRow < 9; perRow += 1) {
       const row = [];
       for (let perColumn = 0; perColumn < 9; perColumn += 1) {

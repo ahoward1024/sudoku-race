@@ -17,8 +17,8 @@ class InputCell extends Component {
   }
 
   static isValidInput(input) {
-    const emptyStringPattern = /^$/,
-          validDigitsPattern = /^[1-9]$/;
+    const emptyStringPattern = /^$/;
+    const validDigitsPattern = /^[1-9]$/;
 
     return validDigitsPattern.test(input) || emptyStringPattern.test(input);
   }
