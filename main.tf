@@ -11,7 +11,7 @@ provider "aws" {
 }
 
 locals {
-  elb_origin_id = "ELB-backend-elb"
+  lb_origin_id = "ELB-backend-lb"
 }
 
 data "aws_availability_zones" "all" {}
@@ -55,6 +55,37 @@ resource "aws_launch_configuration" "backend" {
   }
 }
 
+resource "aws_alb" "alb" {
+  name = "sudokurace-lb"
+  security_groups = ["${aws_security_group.lb.id}"]
+  subnets = ["subnet-58d6152f", "subnet-dc7c9c85", "subnet-33832e56"]
+}
+
+resource "aws_alb_listener" "alb" {
+  load_balancer_arn = "${aws_alb.alb.arn}"
+  port = "443"
+  protocol = "HTTPS"
+  ssl_policy = "ELBSecurityPolicy-2016-08"
+  certificate_arn = "${aws_acm_certificate.cert.arn}"
+
+  default_action {
+    target_group_arn = "${aws_alb_target_group.alb.arn}"
+    type = "forward"
+  }
+}
+
+resource "aws_alb_target_group" "alb" {
+  name = "sudokurace-lb-target-group"
+  port = "80"
+  protocol = "HTTP"
+  vpc_id = "vpc-214d9b44"
+}
+
+resource "aws_autoscaling_attachment" "alb" {
+  alb_target_group_arn = "${aws_alb_target_group.alb.arn}"
+  autoscaling_group_name = "${aws_autoscaling_group.backend.id}"
+}
+
 resource "aws_autoscaling_group" "backend" {
   launch_configuration = "${aws_launch_configuration.backend.id}"
   availability_zones = ["${data.aws_availability_zones.all.names}"]
@@ -62,30 +93,12 @@ resource "aws_autoscaling_group" "backend" {
   min_size = 1
   max_size = 1
 
-  load_balancers = ["${aws_elb.backend.name}"]
+  target_group_arns = ["${aws_alb_target_group.alb.arn}"]
 
   tag {
     key = "Name"
     value = "backend-asg"
     propagate_at_launch = true
-  }
-
-  lifecycle {
-    create_before_destroy = true
-  }
-}
-
-resource "aws_elb" "backend" {
-  name = "backend-elb"
-  security_groups = ["${aws_security_group.elb.id}"]
-  availability_zones = ["${data.aws_availability_zones.all.names}"]
-
-  listener {
-    lb_port = 443
-    lb_protocol = "https"
-    instance_port = "${var.server_port}"
-    instance_protocol = "http"
-    ssl_certificate_id = "${aws_acm_certificate.cert.arn}"
   }
 
   lifecycle {
@@ -100,7 +113,7 @@ resource "aws_security_group" "backend" {
     from_port = "${var.server_port}"
     to_port = "${var.server_port}"
     protocol = "tcp"
-    security_groups = ["${aws_security_group.elb.id}"]
+    security_groups = ["${aws_security_group.lb.id}"]
   }
 
   lifecycle {
@@ -108,8 +121,8 @@ resource "aws_security_group" "backend" {
   }
 }
 
-resource "aws_security_group" "elb" {
-  name = "elb-sg"
+resource "aws_security_group" "lb" {
+  name = "lb-sg"
 
   ingress {
     from_port = "443"
@@ -167,8 +180,8 @@ resource "aws_acm_certificate_validation" "cert" {
 
 resource "aws_cloudfront_distribution" "distribution" {
   origin {
-    domain_name = "${aws_elb.backend.dns_name}"
-    origin_id = "${local.elb_origin_id}"
+    domain_name = "${aws_alb.alb.dns_name}"
+    origin_id = "${local.lb_origin_id}"
 
     custom_origin_config {
       http_port = 80
@@ -185,7 +198,7 @@ resource "aws_cloudfront_distribution" "distribution" {
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "${local.elb_origin_id}"
+    target_origin_id = "${local.lb_origin_id}"
 
     forwarded_values {
       query_string = false
