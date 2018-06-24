@@ -46,7 +46,7 @@ jobs:
 
   docker_build:
     docker:
-      - image: python:3.6-stretch
+      - image: circleci/openjdk:8-jdk
     steps:
       - checkout
       - setup_remote_docker
@@ -97,6 +97,7 @@ workflows:
             - lint_git_commits
       - docker_build:
           requires:
+            - test_frontend
             - test_backend
           filters:
             branches:
