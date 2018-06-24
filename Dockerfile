@@ -18,7 +18,8 @@ RUN npm run-script build
 
 # Copy built frontend bundle to backend
 WORKDIR /app
-COPY /frontend/build /app/static/
+RUN mkdir -p /app/static
+RUN cp -r /frontend/build/* /app/static/
 RUN mv /app/static/static/* /app/static/ && rm -rf /app/static/static
 
 # Multi-stage build, so that our final container doesn't include node_modules

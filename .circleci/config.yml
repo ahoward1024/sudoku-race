@@ -97,6 +97,7 @@ workflows:
             - lint_git_commits
       - docker_build:
           requires:
+            - test_frontend
             - test_backend
           filters:
             branches:
