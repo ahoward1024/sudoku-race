@@ -13,7 +13,7 @@ class Board extends Component {
   }
 
   componentDidMount() {
-    fetch('https://backend.sudokurace.io/game.create')
+    fetch('https://www.sudokurace.io/game.create')
       .then(resp => resp.json())
       .then(json => json.board.split(''))
       .then(board => this.setState({board}))
