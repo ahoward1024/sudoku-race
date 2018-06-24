@@ -10,11 +10,10 @@ class Board extends Component {
       'board': '',
       'gameid': ''
     };
-    this.getCellValues = this.getCellValues.bind(this);
   }
 
   componentDidMount() {
-    fetch('http://backend.sudokurace.io/game.create')
+    fetch('https://backend.sudokurace.io/game.create')
       .then(resp => resp.json())
       .then(json => json.board.split(''))
       .then(board => this.setState({board}))
@@ -23,19 +22,21 @@ class Board extends Component {
       });
   }
 
-  getCellValues() {
+  static parseBoard(board) {
+    // First load of the board has no state
+    const isOnFirstLoad = board === '';
     const rows = [];
-    let index = 0,
-        it = 1;
+
+    let index = 0;
+    let it = 1;
     for (let perRow = 0; perRow < 9; perRow += 1) {
       const row = [];
       for (let perColumn = 0; perColumn < 9; perColumn += 1) {
-        const value = this.state.board[index];
-        // NOTE/FIXME(alex): Without (val === undefined) React will complain that the CellNoInput
-        // is an uncontrolled component that is being switched to a controlled component.
-        if (value === ' ' || value === undefined) {
+        const value = board[index];
+        if (isOnFirstLoad || value === ' ') {
+          // If the space is blank, create an empty InputCell
           row.push(<td key={`c${perRow}${perColumn}`} className={`cell c${it}`}>
-                   <InputCell value={`${value}`} index={`${index}`}/></td>);
+                   <InputCell value={''} index={`${index}`}/></td>);
         } else {
           row.push(<td key={`c${perRow}${perColumn}`} className={`cell c${it}`}>
                    <NoInputCell value={`${value}`} index={`${index}`}/></td>);
@@ -57,7 +58,7 @@ class Board extends Component {
   }
 
   render() {
-    const rows = this.getCellValues();
+    const rows = Board.parseBoard(this.state.board);
 
     return (
       <div >

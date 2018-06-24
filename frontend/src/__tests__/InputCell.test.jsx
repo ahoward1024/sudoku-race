@@ -7,9 +7,22 @@ import sinon from 'sinon';
 
 Enzyme.configure({'adapter': new Adapter()});
 
-test('Create an InputCell', () => {
+test('Create an empty InputCell', () => {
   const tree = renderer.create(<InputCell/>).toJSON();
   expect(tree).toMatchSnapshot();
+});
+
+test('Create an InputCell', () => {
+  const tree = renderer.create(<InputCell value="1"/>).toJSON();
+  expect(tree).toMatchSnapshot();
+});
+
+test('Changing InputCell updates state', () => {
+  const event = {'target': {'value': '2'}};
+  const wrapper = shallow(<InputCell value="1"/>);
+  expect(wrapper.state('value')).toBe('1');
+  wrapper.find('input').simulate('change', event);
+  expect(wrapper.state('value')).toBe('2');
 });
 
 test('Test if the sent keypress was not a number', () => {
