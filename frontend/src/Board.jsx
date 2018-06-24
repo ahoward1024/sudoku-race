@@ -1,104 +1,71 @@
-import React, { Component } from 'react';
-import './Board.css'
+import React, {Component} from 'react';
+import './Board.css';
+import InputCell from './InputCell';
+import NoInputCell from './NoInputCell';
 
 class Board extends Component {
   constructor(props) {
     super(props);
-    this.state = { board: "", width: 0, height: 0 };
+    this.state = {
+      'board': '',
+      'gameid': ''
+    };
   }
 
-  componentDidMount(){
-    fetch('http://192.168.0.21:8080/game.create')
+  componentDidMount() {
+    fetch('https://backend.sudokurace.io/game.create')
       .then(resp => resp.json())
-      .then(json => json["board"].split(""))
-      .then(board => this.setState({ board }))
-      .catch(function(resp) {
-        console.log("Error getting response from server: " + resp)
-      })
+      .then(json => json.board.split(''))
+      .then(board => this.setState({board}))
+      .catch(resp => {
+        console.log(`Error getting response from server: ${resp}`);
+      });
   }
 
-  
-  render() {
-    var rows = [];
-    var pos = 0;
-    var it = 1;
-    for(var i = 0; i < 9; ++i) {
-      var row = [];
-      for(var j = 0; j < 9; ++j) {
-        var val = this.state.board[pos];
-        // NOTE/FIXME(alex): Without (val === undefined) React will complain that the CellNoInput
-        // is an uncontrolled component that is being switched to a controlled component.
-        if(val === ' ' || val === undefined) {
-          row.push(<td key={"c"+i+j} className={"cell c"+it}><CellInput/></td>);
+  static parseBoard(board) {
+    // First load of the board has no state
+    const isOnFirstLoad = board === '';
+    const rows = [];
+
+    let index = 0;
+    let it = 1;
+    for (let perRow = 0; perRow < 9; perRow += 1) {
+      const row = [];
+      for (let perColumn = 0; perColumn < 9; perColumn += 1) {
+        const value = board[index];
+        if (isOnFirstLoad || value === ' ') {
+          // If the space is blank, create an empty InputCell
+          row.push(<td key={`c${perRow}${perColumn}`} className={`cell c${it}`}>
+                   <InputCell value={''} index={`${index}`}/></td>);
+        } else {
+          row.push(<td key={`c${perRow}${perColumn}`} className={`cell c${it}`}>
+                   <NoInputCell value={`${value}`} index={`${index}`}/></td>);
         }
-        else {
-          row.push(<td key={"c"+i+j} className={"cell c"+it}><CellNoInput value={val}/></td>)
-        }
-        if(it % 3 === 0) {
+        if (it % 3 === 0) {
           it -= 3;
         }
-        ++it
-        ++pos;
+        it += 1;
+        index += 1;
       }
       it += 3;
-      if(it % 10 === 0) {
+      if (it % 10 === 0) {
         it -= 9;
       }
-      rows.push(<tr key={"r"+i}>{row}</tr>);
+      rows.push(<tr key={`r${perRow}`}>{row}</tr>);
     }
-    var style = {
-      width: this.props.width,
-      height: this.props.height
-    }
-    return(
-      <div>
-        <table className="table-style" style={style}>
-          <tbody className="cell">
-            {rows}
-          </tbody>
+
+    return rows;
+  }
+
+  render() {
+    const rows = Board.parseBoard(this.state.board);
+
+    return (
+      <div >
+        <table className="table-style">
+          <tbody className="cell">{rows}</tbody>
         </table>
       </div>
-    );
-  }
-}
-
-class CellNoInput extends Component {
-  render() {
-    return(
-      <input
-        className="cell-input noinput"
-        type="text"
-        maxLength="1"
-        value={this.props.value}
-        readOnly="true"
-      />
-    );
-  }
-}
-
-class CellInput extends Component {
-  constructor(props) {
-    super(props);
-    this.isNumber = this.isNumber.bind(this);
-  }
-
-  isNumber(event) {
-    var keycode = (event.which) ? event.which : event.keyCode;
-    if (keycode > 31 && (keycode < 48 || keycode > 57)) {
-      event.preventDefault();
-      return;
-    }
-  }
-
-  render() {
-    return(
-      <input
-        className="cell-input"
-        type="text"
-        maxLength="1"
-        defaultValue=""
-        onKeyPress={this.isNumber}
-      />
     );
   }
 }

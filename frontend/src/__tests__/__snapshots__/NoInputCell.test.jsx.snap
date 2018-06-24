@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Create a NoInputCell 1`] = `
+<input
+  className="cell-input noinput"
+  maxLength="1"
+  readOnly="true"
+  value={undefined}
+/>
+`;

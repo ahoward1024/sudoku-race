@@ -1,7 +1,8 @@
 env:
   browser: true
   es6: true
-extends: 'eslint:recommended'
+extends:
+  - 'plugin:react/recommended'
 parserOptions:
   ecmaFeatures:
     experimentalObjectRestSpread: true
@@ -31,7 +32,20 @@ rules:
   callback-return: error
   camelcase: error
   capitalized-comments: 'off'
-  class-methods-use-this: error
+  class-methods-use-this:
+    - error
+    - exceptMethods:
+      - componentDidMount
+      - componentDidUpdate
+      - componentWillMount
+      - componentWillReceiveProps
+      - componentWillUnmount
+      - componentWillUpdate
+      - getChildContext
+      - getDefaultProps
+      - getInitialState
+      - render
+      - shouldComponentUpdate
   comma-dangle: error
   comma-spacing:
     - error
@@ -92,7 +106,9 @@ rules:
   max-lines: error
   max-nested-callbacks: error
   max-params: error
-  max-statements: error
+  max-statements:
+    - error
+    - max: 50
   max-statements-per-line: error
   multiline-comment-style:
     - error
@@ -111,7 +127,6 @@ rules:
   no-caller: error
   no-catch-shadow: error
   no-confusing-arrow: error
-  no-console: 'off'
   no-continue: error
   no-div-regex: error
   no-duplicate-imports: error
@@ -179,7 +194,7 @@ rules:
   no-throw-literal: error
   no-trailing-spaces: error
   no-undef-init: error
-  no-undefined: error
+  no-undefined: 'off'
   no-underscore-dangle: error
   no-unmodified-loop-condition: error
   no-unneeded-ternary: error
@@ -201,8 +216,12 @@ rules:
   object-curly-spacing: error
   object-property-newline: error
   object-shorthand: error
-  one-var: error
-  one-var-declaration-per-line: error
+  one-var:
+    - error
+    - never
+  one-var-declaration-per-line:
+    - error
+    - initializations
   operator-assignment: error
   operator-linebreak: error
   padded-blocks: 'off'
