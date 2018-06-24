@@ -61,7 +61,7 @@ resource "aws_elb" "backend" {
     lb_protocol = "https"
     instance_port = "${var.server_port}"
     instance_protocol = "http"
-    ssl_certificate_id = "arn:aws:acm:us-west-2:717012417639:certificate/95a0de96-0eaa-4c61-8a24-80bac18c13e6"
+    ssl_certificate_id = "arn:aws:acm:us-west-2:717012417639:certificate/64c97d07-84b2-43ad-857c-941a14053c69"
   }
 
   lifecycle {
@@ -108,7 +108,7 @@ resource "aws_security_group" "elb" {
 
 resource "aws_route53_record" "backend" {
   zone_id = "Z3M4U9F1SEVV2O"
-  name = "backend.sudokurace.io"
+  name = "www.sudokurace.io"
   type = "CNAME"
   ttl = "5"
   records = ["${aws_elb.backend.dns_name}"]
