@@ -1,0 +1,9 @@
+frontend/node_modules/
+**/__pycache__/
+backend/htmlcov/
+backend/instance/
+
+Dockerfile
+backend/coverage.xml
+
+**/*.pyc

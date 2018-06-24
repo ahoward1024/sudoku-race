@@ -2,16 +2,12 @@ version: 2
 jobs:
   lint_git_commits:
     docker:
-      - image: circleci/openjdk:8-jdk
+      - image: python:3.6-stretch
     working_directory: ~/sudoku-race
     steps:
       - checkout
-      - run:
-          name: "Install gitlint"
-          command: |
-            sudo apt-get update -qq && sudo apt-get install -y python-dev python-pip
-            pip install gitlint
-      - run: ~/.local/bin/gitlint --commits 6c42184...HEAD
+      - run: pip install gitlint
+      - run: gitlint --commits 6c42184...HEAD
 
   test_frontend:
     docker:
@@ -33,60 +29,25 @@ jobs:
       - store_artifacts:
           path: frontend/coverage
 
-  deploy_frontend:
-    docker:
-      - image: circleci/node:8.11.2-stretch
-    working_directory: ~/sudoku-race
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies{{ checksum "frontend/package-lock.json" }}
-            - v1-dependencies-
-      - run: cd frontend && npm install
-      - save_cache:
-          paths:
-            - ~/sudoku-race/frontend/node_modules
-          key: v1-dependencies-{{ checksum "frontend/package-lock.json" }}
-      - run: cd frontend && npm run-script build
-      - run:
-          name: "Install aws cli"
-          command: |
-            sudo apt-get update -qq && sudo apt-get install -y python-dev
-            curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
-            unzip awscli-bundle.zip
-            sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
-      - run:
-          name: "Sync optimized build to S3, invalidate CloudFront"
-          command: |
-            aws s3 sync frontend/build s3://www.sudokurace.io
-            aws cloudfront create-invalidation --distribution-id EGZ7RY9UXMOMT --paths "/*"
-
   test_backend:
     docker:
-      - image: circleci/openjdk:8-jdk
+      - image: python:3.6-stretch
     working_directory: ~/sudoku-race
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies{{ checksum "backend/build.gradle" }}
-            - v1-dependencies-
-      - run: cd backend && gradle wrapper
-      - run: cd backend && ./gradlew dependencies
-      - save_cache:
-          paths:
-            - ~/.gradle
-          key: v1-dependencies-{{ checksum "backend/build.gradle" }}
-      - run: cd backend && ./gradlew build
+      - run: pip install pipenv
+      - run: cd backend && pipenv install --dev
+      - run: cd backend && pipenv run flake8 --show-source
+      - run: cd backend && pipenv run pytest --cov-report html --junit-xml=coverage.xml --cov-branch --cov-fail-under=80 -v --cov=sudokurace tests/
+      - run: mkdir -p backend/test-results/pytest && cp backend/coverage.xml backend/test-results/pytest/results.xml
 
       - store_artifacts:
-          path: backend/service/build/reports
+          path: backend/htmlcov
 
       - store_test_results:
-          path: backend/service/build/test-results
+          path: backend/test-results
 
-  docker_build_backend:
+  docker_build:
     docker:
       - image: circleci/openjdk:8-jdk
     steps:
@@ -104,7 +65,7 @@ jobs:
       - run:
           name: "Build & push Docker image"
           command: |
-            docker build -t $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/sudokurace:latest -t $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/sudokurace:$CIRCLE_SHA1 -f backend/Dockerfile backend
+            docker build -t $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/sudokurace:$CIRCLE_SHA1 .
             docker push $AWS_ACCOUNT_ID.dkr.ecr.us-west-2.amazonaws.com/sudokurace:$CIRCLE_SHA1
 
   terraform_apply:
@@ -116,9 +77,11 @@ jobs:
       - run:
           name: "Apply Terraform plan"
           command: |
+            export TF_VAR_tag=$CIRCLE_SHA1
             curl "https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip" -o "terraform.zip"
             unzip terraform.zip
             ./terraform init -input=false
+            ./terraform taint aws_autoscaling_group.backend
             ./terraform plan -out=tfplan.txt -input=false
             ./terraform apply -input=false -auto-approve tfplan.txt
       - store_artifacts:
@@ -132,18 +95,12 @@ workflows:
       - test_frontend:
           requires:
             - lint_git_commits
-      - deploy_frontend:
-          requires:
-            - test_frontend
-          filters:
-            branches:
-              only:
-                - master
       - test_backend:
           requires:
             - lint_git_commits
-      - docker_build_backend:
+      - docker_build:
           requires:
+            - test_frontend
             - test_backend
           filters:
             branches:
@@ -153,7 +110,7 @@ workflows:
           requires:
             - test_frontend
             - test_backend
-            - docker_build_backend
+            - docker_build
           filters:
             branches:
               only:
