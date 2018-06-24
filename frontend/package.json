@@ -11,7 +11,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jsdom --coverage",
     "testall": "react-scripts test --env=jsdom --watchAll",
     "coverage": "react-scripts test --env=jsdom --watchAll --coverage",
     "eject": "react-scripts eject"
@@ -26,5 +26,19 @@
     "react-test-renderer": "^16.4.1",
     "sinon": "^6.0.0",
     "styled-components": "^3.3.2"
+  },
+  "jest": {
+  	"collectCoverageFrom": [
+  		"**/*.{jsx}",
+  		"!**/node_modules/**"
+  	],
+  	"coverageThreshold": {
+  		"global": {
+  			"branches": 75,
+  			"functions": 75,
+  			"lines": 75,
+  			"statements": 75
+  		}
+  	}
   }
 }
