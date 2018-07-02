@@ -2,17 +2,7 @@ import React, {Component} from 'react';
 import './Board.css';
 import InputCell from './InputCell';
 import NoInputCell from './NoInputCell';
-
-const fetchResponseJson = async (url) => {
-  try {
-    const response = await fetch(url);
-    const json = await response.json();
-    const board = await json.board;
-    return board;
-  } catch(error) {
-    console.log(`Error ${url}: ${error}`);
-  }
-}
+import PropTypes from 'prop-types';
 
 class Board extends Component {
   constructor(props) {
@@ -21,26 +11,25 @@ class Board extends Component {
       'board': '',
       'gameid': ''
     };
-    //this.getBoardFromServer = this.getBoardFromServer.bind(this);
   }
 
-  /*
-   getBoardFromServer(url) {
-    fetch(url)
-    .then(response => response.json())
-    .then(json => json.board.split(''))
-    .then(board => this.setState({'board': board}))
-    .catch(error => {
+  static async fetchResponseJson(url) {
+    let board = '';
+    try {
+      const response = await fetch(url);
+      const json = await response.json();
+      board = await json.board;
+    } catch (error) {
       console.log(`Error ${url}: ${error}`);
-    });
-    console.log(`Board from GBFS ${this.state.board}  ....`);
+    }
+
+    return board;
   }
-  */
 
   componentDidMount() {
-    return fetchResponseJson(this.props.url).then((board) => {
-            if(!(board === undefined)) {
-              this.setState({'board': board});
+    return Board.fetchResponseJson(this.props.url).then(board => {
+            if (!(board === undefined)) {
+              this.setState({board});
             }
           });
   }
@@ -108,5 +97,7 @@ class Board extends Component {
     );
   }
 }
+
+Board.propTypes = {'url': PropTypes.string};
 
 export default Board;

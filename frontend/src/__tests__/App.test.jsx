@@ -1,8 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import Enzyme, {shallow} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import App from '../App';
 
-test('Create an App', async () => {
-  const tree = await renderer.create(<App/>).toJSON();
-  expect(tree).toMatchSnapshot();
+Enzyme.configure({'adapter': new Adapter()});
+
+test('Create an App', () => {
+  const wrapper = shallow(<App/>);
 });

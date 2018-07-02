@@ -22,13 +22,29 @@ describe('testing', () => {
   });
 
   test('Board creation and fetch success', async () => {
-    fetch.mockResponse(JSON.stringify({'id': 0, 'board': fullBoard}), {'status': 200});
+    fetch.mockResponse(JSON.stringify({
+        'board': fullBoard,
+        'id': 0
+      }), {'status': 200});
     const wrapper = shallow(<Board url={url}/>);
     await wrapper.instance().componentDidMount();
     // This will be 2 because we "call" intance().componentDidMount() to await on it
     expect(fetch.mock.calls.length).toEqual(2);
     expect(fetch.mock.calls[0][0]).toEqual(url);
     expect(wrapper.state('board')).toEqual(fullBoard);
+  });
+
+  test('Board creation and fetch success but board is undefined', async () => {
+    fetch.mockResponse(JSON.stringify({
+        'board': undefined,
+        'id': 0
+      }), {'status': 200});
+    const wrapper = shallow(<Board url={url}/>);
+    await wrapper.instance().componentDidMount();
+    // This will be 2 because we "call" intance().componentDidMount() to await on it
+    expect(fetch.mock.calls.length).toEqual(2);
+    expect(fetch.mock.calls[0][0]).toEqual(url);
+    expect(wrapper.state('board')).toEqual('');
   });
 
   test('Board creation and fetch failure', async () => {
@@ -39,5 +55,5 @@ describe('testing', () => {
     expect(wrapper.state('board')).toEqual('');
   });
 
-})
+});
 
