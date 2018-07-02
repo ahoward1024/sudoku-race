@@ -3,8 +3,9 @@
 exports[`Create a NoInputCell 1`] = `
 <input
   className="cell-input noinput"
+  id={undefined}
   maxLength="1"
   readOnly="true"
-  value={undefined}
+  value="1"
 />
 `;

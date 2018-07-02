@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 class InputCell extends Component {
   constructor(props) {
     super(props);
-    this.state = {'value': this.props.value};
+    this.state = {
+      'id': this.props.id,
+      'value': this.props.value
+    };
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   handleKeyPress(event) {
-    console.log(event.target.value);
     const inputText = event.target.value;
     if (InputCell.isValidInput(inputText)) {
       this.setState({'value': inputText});
@@ -26,6 +28,8 @@ class InputCell extends Component {
   render() {
     return (
       <input
+        key={this.state.id}
+        id={this.state.id}
         className="cell-input"
         onChange={this.handleKeyPress}
         value={this.state.value}
@@ -34,6 +38,9 @@ class InputCell extends Component {
   }
 }
 
-InputCell.propTypes = {'value': PropTypes.string};
+InputCell.propTypes = {
+  'id': PropTypes.string,
+  'value': PropTypes.string
+};
 
 export default InputCell;

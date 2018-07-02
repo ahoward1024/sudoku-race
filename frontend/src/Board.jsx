@@ -3,6 +3,17 @@ import './Board.css';
 import InputCell from './InputCell';
 import NoInputCell from './NoInputCell';
 
+const fetchResponseJson = async (url) => {
+  try {
+    const response = await fetch(url);
+    const json = await response.json();
+    const board = await json.board;
+    return board;
+  } catch(error) {
+    console.log(`Error ${url}: ${error}`);
+  }
+}
+
 class Board extends Component {
   constructor(props) {
     super(props);
@@ -10,16 +21,28 @@ class Board extends Component {
       'board': '',
       'gameid': ''
     };
+    //this.getBoardFromServer = this.getBoardFromServer.bind(this);
   }
 
+  /*
+   getBoardFromServer(url) {
+    fetch(url)
+    .then(response => response.json())
+    .then(json => json.board.split(''))
+    .then(board => this.setState({'board': board}))
+    .catch(error => {
+      console.log(`Error ${url}: ${error}`);
+    });
+    console.log(`Board from GBFS ${this.state.board}  ....`);
+  }
+  */
+
   componentDidMount() {
-    fetch('https://www.sudokurace.io/game.create')
-      .then(resp => resp.json())
-      .then(json => json.board.split(''))
-      .then(board => this.setState({board}))
-      .catch(resp => {
-        console.log(`Error getting response from server: ${resp}`);
-      });
+    return fetchResponseJson(this.props.url).then((board) => {
+            if(!(board === undefined)) {
+              this.setState({'board': board});
+            }
+          });
   }
 
   static parseBoard(board) {
@@ -35,11 +58,27 @@ class Board extends Component {
         const value = board[index];
         if (isOnFirstLoad || value === ' ') {
           // If the space is blank, create an empty InputCell
-          row.push(<td key={`c${perRow}${perColumn}`} className={`cell c${it}`}>
-                   <InputCell value={''} index={`${index}`}/></td>);
+          row.push(<td
+                     key={`c${perRow}${perColumn}`}
+                     id={`c${perRow}${perColumn}`}
+                     className={`cell c${it}`}>
+                   <InputCell
+                     key={`I${perRow}${perColumn}`}
+                     id={`i${perRow}${perColumn}`}
+                     value={''}
+                     index={`${index}`}/>
+                   </td>);
         } else {
-          row.push(<td key={`c${perRow}${perColumn}`} className={`cell c${it}`}>
-                   <NoInputCell value={`${value}`} index={`${index}`}/></td>);
+          row.push(<td
+                     key={`c${perRow}${perColumn}`}
+                     id={`c${perRow}${perColumn}`}
+                     className={`cell c${it}`}>
+                   <NoInputCell
+                     key={`N${perRow}${perColumn}`}
+                     id={`i${perRow}${perColumn}`}
+                     value={`${value}`}
+                     index={`${index}`}/>
+                   </td>);
         }
         if (it % 3 === 0) {
           it -= 3;

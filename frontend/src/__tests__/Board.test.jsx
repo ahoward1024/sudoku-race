@@ -1,22 +1,43 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import Board from '../Board';
+import InputCell from '../InputCell';
+import NoInputCell from '../NoInputCell';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import Fetch from 'fetch-simulator';
+import fetch from 'jest-fetch-mock';
+
+global.fetch = require('jest-fetch-mock');
 
 Enzyme.configure({'adapter': new Adapter()});
 
-test('Create an empty Board', () => {
-  const tree = renderer.create(<Board/>).toJSON();
-  expect(tree).toMatchSnapshot();
-});
+const url = 'http://foo.baz';
+const fullBoard = '15248937673925684146837129538712465959176342824689' +
+  '5713914637582625948137873512964';
 
-test('Create a board', () => {
-  const fullBoard = '15248937673925684146837129538712465959176342824689' +
-    '5713914637582625948137873512964';
-  const wrapper = shallow(<Board/>);
+describe('testing', () => {
+  beforeEach(() => {
+    fetch.resetMocks();
+  });
 
-  expect(renderer.create(wrapper).toJSON()).toMatchSnapshot();
-  wrapper.setState({'board': fullBoard});
-  expect(renderer.create(wrapper).toJSON()).toMatchSnapshot();
-});
+  test('Board creation and fetch success', async () => {
+    fetch.mockResponse(JSON.stringify({'id': 0, 'board': fullBoard}), {'status': 200});
+    const wrapper = shallow(<Board url={url}/>);
+    await wrapper.instance().componentDidMount();
+    // This will be 2 because we "call" intance().componentDidMount() to await on it
+    expect(fetch.mock.calls.length).toEqual(2);
+    expect(fetch.mock.calls[0][0]).toEqual(url);
+    expect(wrapper.state('board')).toEqual(fullBoard);
+  });
+
+  test('Board creation and fetch failure', async () => {
+    fetch.mockRejectOnce('fake error (fetch calls fails)');
+    const wrapper = await shallow(<Board url={url}/>);
+    expect(fetch.mock.calls.length).toEqual(1);
+    expect(fetch.mock.calls[0][0]).toEqual(url);
+    expect(wrapper.state('board')).toEqual('');
+  });
+
+})
+

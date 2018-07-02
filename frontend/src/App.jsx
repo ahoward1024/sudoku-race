@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <div>
         <h1 id="heading" align="center">Sudoku Race</h1>
-        <Board/>
+        <Board url="https://sudokurace.io/game.create"/>
       </div>
     );
   }

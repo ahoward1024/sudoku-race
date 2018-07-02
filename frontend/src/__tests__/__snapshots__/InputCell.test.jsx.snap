@@ -3,14 +3,16 @@
 exports[`Create an InputCell 1`] = `
 <input
   className="cell-input"
+  id={undefined}
   onChange={[Function]}
-  value="1"
+  value=""
 />
 `;
 
 exports[`Create an empty InputCell 1`] = `
 <input
   className="cell-input"
+  id={undefined}
   onChange={[Function]}
   value={undefined}
 />
