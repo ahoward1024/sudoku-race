@@ -1,7 +1,8 @@
 #!/usr/bin/env python3.6
 
-from sudokurace import app
 from sanic.response import json
+
+from sudokurace import app
 
 
 @app.route('/game.create')
