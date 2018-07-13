@@ -17,7 +17,7 @@ app.static('/service-worker.js', 'static/service-worker.js')
 
 
 @app.route('/')
-async def root(req):
+async def root(req):  # pragma: no cover
     return html(open('./static/index.html').read(),
                 headers={'Cache-Control': 'no-cache'})
 
