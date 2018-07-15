@@ -20,11 +20,22 @@ def make_move(game_id, move):
     current_game_state = game_state[game_id]
     current_game_state['move_history'] += [move]
     current_board = current_game_state['board']
-    pos = move['pos']
-    new_board = current_board[:pos] + move['char'] + \
-        current_board[pos + 1:]
+    move_history = current_game_state['move_history']
 
-    if is_valid_board(new_board):
-        return {'id': game_id, 'board': new_board}
-    else:
-        return {'id': game_id, 'board': current_board}
+    for m in move_history:
+        pos = m['pos']
+
+        new_board = current_board[:pos] + m['char'] + \
+            current_board[pos + 1:]
+
+        if not is_valid_board(new_board):
+            return {'id': game_id, 'board': current_board}
+
+        current_board = new_board
+
+    return {'id': game_id, 'board': new_board}
+
+
+def reset_all_state():
+    global game_state
+    game_state = {}

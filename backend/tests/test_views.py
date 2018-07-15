@@ -1,6 +1,15 @@
 import json
 
+import pytest
+
 from sudokurace import app
+from sudokurace.models.state import reset_all_state
+
+
+@pytest.fixture(autouse=True)
+def reset_state_fixture():
+    print('resetting state')
+    reset_all_state()
 
 
 def test_game_create_not_null():
@@ -10,6 +19,7 @@ def test_game_create_not_null():
 
 
 def test_game_move_not_null():
+    app.test_client.get('/game.create')
     req_json = {'id': 0, 'move': {'pos': 0, 'char': '8'}}
     request, response = app.test_client.post('/game.move',
                                              data=json.dumps(req_json))
@@ -56,3 +66,18 @@ def test_make_valid_move():
     as_json = json.loads(response.body)
     # The new board will have a 1 at the head of it
     assert as_json['board'] == '1' + as_json['board'][1:]
+
+
+def test_make_multiple_moves():
+    app.test_client.get('/game.create')
+
+    moves = [
+        {'id': 0, 'move': {'pos': 0, 'char': '1'}},
+        {'id': 0, 'move': {'pos': 1, 'char': '2'}}
+    ]
+
+    for move in moves:
+        request, response = app.test_client.post('/game.move',
+                                                 data=json.dumps(move))
+        as_json = json.loads(response.body)
+    assert as_json['board'] == '12' + as_json['board'][2:]
