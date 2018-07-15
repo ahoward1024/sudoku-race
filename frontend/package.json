@@ -33,6 +33,7 @@
   },
   "jest": {
     "collectCoverageFrom": [
+      "!src/App.jsx",
       "**/*.{jsx}",
       "!**/node_modules/**"
     ],
