@@ -1,4 +1,5 @@
 #!/usr/bin/env python3.6
+from sudokurace.core import is_valid_board
 
 # Global state, will need to store this externally, eventually
 game_state = {}
@@ -16,6 +17,14 @@ def create_game():
 
 
 def make_move(game_id, move):
-    game_state[game_id]['move_history'] += [move]
-    print(game_state)
-    return game_state[game_id]
+    current_game_state = game_state[game_id]
+    current_game_state['move_history'] += [move]
+    current_board = current_game_state['board']
+    pos = move['pos']
+    new_board = current_board[:pos] + move['char'] + \
+        current_board[pos + 1:]
+
+    if is_valid_board(new_board):
+        return {'id': game_id, 'board': new_board}
+    else:
+        return {'id': game_id, 'board': current_board}
