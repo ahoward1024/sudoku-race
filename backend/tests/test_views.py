@@ -81,3 +81,20 @@ def test_make_multiple_moves():
                                                  data=json.dumps(move))
         as_json = json.loads(response.body)
     assert as_json['board'] == '12' + as_json['board'][2:]
+
+
+def test_that_trying_to_reuse_a_spot_fails():
+    app.test_client.get('/game.create')
+
+    moves = [
+        {'id': 0, 'move': {'pos': 0, 'char': '1'}},
+        {'id': 0, 'move': {'pos': 0, 'char': '2'}}
+    ]
+
+    for move in moves:
+        request, response = app.test_client.post('/game.move',
+                                                 data=json.dumps(move))
+        as_json = json.loads(response.body)
+
+    # The second move should not be applied
+    assert as_json['board'] == '1' + as_json['board'][1:]

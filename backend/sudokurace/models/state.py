@@ -25,6 +25,9 @@ def make_move(game_id, move):
     for m in move_history:
         pos = m['pos']
 
+        if current_board[pos] != ' ':
+            return {'id': game_id, 'board': current_board}
+
         new_board = current_board[:pos] + m['char'] + \
             current_board[pos + 1:]
 
