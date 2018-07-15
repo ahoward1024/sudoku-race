@@ -24,12 +24,6 @@ async def move(req):
         return text('Json was missing move')
 
     game_id = req.json['id']
-    print(game_id)
-
     game_move = req.json['move']
-    print(game_move)
-
     next_board_state = state.make_move(game_id, game_move)
-    print(next_board_state)
-
     return json(next_board_state)

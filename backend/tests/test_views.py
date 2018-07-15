@@ -1,4 +1,5 @@
 import json
+import logging
 
 import pytest
 
@@ -8,7 +9,7 @@ from sudokurace.models.state import reset_all_state
 
 @pytest.fixture(autouse=True)
 def reset_state_fixture():
-    print('resetting state')
+    logging.info('resetting state')
     reset_all_state()
 
 
