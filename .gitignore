@@ -1,1 +1,2 @@
 .terraform
+.pytest_cache
