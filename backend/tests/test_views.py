@@ -14,13 +14,13 @@ def reset_state_fixture():
 
 
 def test_game_create_not_null():
-    request, response = app.test_client.get('/game.create')
+    request, response = app.test_client.put('/game.create')
     as_json = json.loads(response.body)
     assert as_json
 
 
 def test_game_move_not_null():
-    app.test_client.get('/game.create')
+    app.test_client.put('/game.create')
     req_json = {'id': 0, 'move': {'pos': 0, 'char': '8'}}
     request, response = app.test_client.post('/game.move',
                                              data=json.dumps(req_json))
@@ -50,7 +50,7 @@ def test_game_move_missing_move():
 
 def test_make_invalid_move():
     req_json = {'id': 0, 'move': {'pos': 0, 'char': '8'}}
-    create_req, create_resp = app.test_client.get('/game.create')
+    create_req, create_resp = app.test_client.put('/game.create')
     created_board = json.loads(create_resp.body)['board']
     request, response = app.test_client.post('/game.move',
                                              data=json.dumps(req_json))
@@ -61,7 +61,7 @@ def test_make_invalid_move():
 
 def test_make_valid_move():
     req_json = {'id': 0, 'move': {'pos': 0, 'char': '1'}}
-    create_req, create_resp = app.test_client.get('/game.create')
+    create_req, create_resp = app.test_client.put('/game.create')
     request, response = app.test_client.post('/game.move',
                                              data=json.dumps(req_json))
     as_json = json.loads(response.body)
@@ -70,7 +70,7 @@ def test_make_valid_move():
 
 
 def test_make_multiple_moves():
-    app.test_client.get('/game.create')
+    app.test_client.put('/game.create')
 
     moves = [
         {'id': 0, 'move': {'pos': 0, 'char': '1'}},
@@ -85,7 +85,7 @@ def test_make_multiple_moves():
 
 
 def test_that_trying_to_reuse_a_spot_fails():
-    app.test_client.get('/game.create')
+    app.test_client.put('/game.create')
 
     moves = [
         {'id': 0, 'move': {'pos': 0, 'char': '1'}},

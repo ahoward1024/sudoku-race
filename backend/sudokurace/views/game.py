@@ -1,12 +1,11 @@
 #!/usr/bin/env python3.6
-
 from sanic.response import json, text
 
 from sudokurace import app
 from sudokurace.models import state
 
 
-@app.route('/game.create')
+@app.route('/game.create', methods=['PUT', 'OPTIONS'])
 async def root(req):
     created_game = state.create_game()
     return json(created_game)

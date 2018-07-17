@@ -13,10 +13,10 @@ class Board extends Component {
     };
   }
 
-  static async fetchResponseJson(url) {
+  static async fetchResponseJson(url, method = 'GET') {
     let board = '';
     try {
-      const response = await fetch(url);
+      const response = await fetch(url, {method});
       const json = await response.json();
       board = await json.board;
     } catch (error) {
@@ -27,7 +27,7 @@ class Board extends Component {
   }
 
   componentDidMount() {
-    return Board.fetchResponseJson(this.props.url).then(board => {
+    return Board.fetchResponseJson(this.props.url, 'PUT').then(board => {
             if (!(board === undefined)) {
               this.setState({board});
             }
