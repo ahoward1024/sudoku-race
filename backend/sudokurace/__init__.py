@@ -1,7 +1,12 @@
 #!/usr/bin/env python3.6
+import logging
+
 from sanic import Sanic
-from sanic_cors import CORS
 from sanic.response import html
+
+from sanic_cors import CORS
+
+logging.getLogger().setLevel(logging.INFO)
 
 app = Sanic(__name__)
 CORS(app)
@@ -16,7 +21,7 @@ app.static('/service-worker.js', 'static/service-worker.js')
 
 
 @app.route('/')
-async def root(req):
+async def root(req):  # pragma: no cover
     return html(open('./static/index.html').read(),
                 headers={'Cache-Control': 'no-cache'})
 
