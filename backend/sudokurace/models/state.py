@@ -1,5 +1,5 @@
 #!/usr/bin/env python3.6
-from sudokurace.core import is_valid_board
+from sudokurace.core import solve
 
 # Global state, will need to store this externally, eventually
 game_state = {}
@@ -31,7 +31,7 @@ def make_move(game_id, move):
         new_board = current_board[:pos] + m['char'] + \
             current_board[pos + 1:]
 
-        if not is_valid_board(new_board):
+        if not solve(new_board):
             return {'id': game_id, 'board': current_board}
 
         current_board = new_board
