@@ -1,7 +1,7 @@
 from sudokurace.core import (
-    solve,
     display,
-    parse_grid
+    parse_grid,
+    solve
 )
 
 

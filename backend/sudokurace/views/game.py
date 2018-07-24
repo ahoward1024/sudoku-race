@@ -1,6 +1,5 @@
 #!/usr/bin/env python3.6
 from sanic.response import json, text
-
 from sudokurace import app
 from sudokurace.models import state
 
