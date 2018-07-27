@@ -7,18 +7,35 @@ import sinon from 'sinon';
 
 Enzyme.configure({'adapter': new Adapter()});
 
+const cellSize = 10;
+const textScale = 1.0;
+const id = '1';
+const value = '';
+
 test('Create an empty InputCell', () => {
-  const tree = renderer.create(<InputCell/>).toJSON();
+  const tree = renderer.create(<InputCell
+                               id={id}
+                               value={value}
+                               cellSize={cellSize}
+                               textScale={textScale} />).toJSON();
   expect(tree).toMatchSnapshot();
 });
 
 test('Create an InputCell', () => {
-  const tree = renderer.create(<InputCell value=""/>).toJSON();
+  const tree = renderer.create(<InputCell
+                               id={id}
+                               value={value}
+                               cellSize={cellSize}
+                               textScale={textScale}/>).toJSON();
   expect(tree).toMatchSnapshot();
 });
 
 test('Changing InputCell updates state', () => {
-  const wrapper = shallow(<InputCell value="1"/>);
+  const wrapper = shallow(<InputCell
+                          id={id}
+                          value="1"
+                          cellSize={cellSize}
+                          textScale={textScale}/>);
   expect(wrapper.state('value')).toBe('1');
   const event = {'target': {'value': '2'}};
   wrapper.find('input').simulate('change', event);

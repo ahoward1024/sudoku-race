@@ -3,8 +3,15 @@
 exports[`Create an InputCell 1`] = `
 <input
   className="cell-input"
-  id={undefined}
+  id="1"
   onChange={[Function]}
+  style={
+    Object {
+      "fontSize": 10,
+      "height": 10,
+      "width": 10,
+    }
+  }
   value=""
 />
 `;
@@ -12,8 +19,15 @@ exports[`Create an InputCell 1`] = `
 exports[`Create an empty InputCell 1`] = `
 <input
   className="cell-input"
-  id={undefined}
+  id="1"
   onChange={[Function]}
-  value={undefined}
+  style={
+    Object {
+      "fontSize": 10,
+      "height": 10,
+      "width": 10,
+    }
+  }
+  value=""
 />
 `;
