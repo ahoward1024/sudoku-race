@@ -23,8 +23,10 @@ function NoInputCell({cellSize, id, textScale, value}) {
 }
 
 NoInputCell.propTypes = {
-  'id': PropTypes.string,
-  'value': PropTypes.string
+  'cellSize': PropTypes.number.isRequired,
+  'id': PropTypes.string.isRequired,
+  'textScale': PropTypes.number.isRequired,
+  'value': PropTypes.string.isRequired
 };
 
 export default NoInputCell;
