@@ -34,7 +34,7 @@ class Board extends Component {
           });
   }
 
-  static parseBoard(board) {
+  static parseBoard(board, cellSize, textScale) {
     // First load of the board has no state
     const isOnFirstLoad = board === '';
     const rows = [];
@@ -54,6 +54,8 @@ class Board extends Component {
                    <InputCell
                      key={`I${perRow}${perColumn}`}
                      id={`i${perRow}${perColumn}`}
+                     cellSize={cellSize}
+                     textScale={textScale}
                      value={''}
                      index={`${index}`}/>
                    </td>);
@@ -65,6 +67,8 @@ class Board extends Component {
                    <NoInputCell
                      key={`N${perRow}${perColumn}`}
                      id={`i${perRow}${perColumn}`}
+                     cellSize={cellSize}
+                     textScale={textScale}
                      value={`${value}`}
                      index={`${index}`}/>
                    </td>);
@@ -86,10 +90,10 @@ class Board extends Component {
   }
 
   render() {
-    const rows = Board.parseBoard(this.state.board);
+    const rows = Board.parseBoard(this.state.board, this.props.cellSize, this.props.textScale);
 
     return (
-      <div >
+      <div>
         <table className="table-style">
           <tbody className="cell">{rows}</tbody>
         </table>
@@ -98,6 +102,15 @@ class Board extends Component {
   }
 }
 
-Board.propTypes = {'url': PropTypes.string};
+Board.propTypes = {
+  'cellSize': PropTypes.number,
+  'textScale': PropTypes.number,
+  'url': PropTypes.string
+};
+
+Board.defaultProps = {
+  'cellSize': 50,
+  'textScale': 0.65
+};
 
 export default Board;
