@@ -21,31 +21,40 @@ def test_game_create_not_null():
 
 def test_game_move_not_null():
     app.test_client.put('/game.create')
-    req_json = {'id': 0, 'move': {'pos': 0, 'char': '8'}}
+    req_json = {'id': 0, 'move': {'pos': 0, 'char': '4'}}
     request, response = app.test_client.post('/game.move',
                                              data=json.dumps(req_json))
     as_json = json.loads(response.body)
     assert len(as_json['board']) == 81
     assert as_json
+    assert 'INCOMPLETE' == as_json['status']
 
 
 def test_game_move_missing_json():
     request, response = app.test_client.post('/game.move')
-    assert response.body == b'No json received'
+    as_json = json.loads(response.body)
+    assert 'INVALID' == as_json['status']
+    assert 'No json received' == as_json['message']
 
 
 def test_game_move_missing_id():
     req_json = {'move': {}}
     request, response = app.test_client.post('/game.move',
                                              data=json.dumps(req_json))
-    assert response.body == b'Json was missing id'
+    as_json = json.loads(response.body)
+    assert 'INVALID' == as_json['status']
+    assert 'Missing id' == as_json['message']
 
 
 def test_game_move_missing_move():
     req_json = {'id': 0}
     request, response = app.test_client.post('/game.move',
                                              data=json.dumps(req_json))
-    assert response.body == b'Json was missing move'
+    request, response = app.test_client.post('/game.move',
+                                             data=json.dumps(req_json))
+    as_json = json.loads(response.body)
+    assert 'INVALID' == as_json['status']
+    assert 'Missing move' == as_json['message']
 
 
 def test_make_invalid_move():
@@ -57,6 +66,7 @@ def test_make_invalid_move():
     as_json = json.loads(response.body)
     # Board doesn't change because the move was invalid
     assert created_board == as_json['board']
+    assert 'INVALID' == as_json['status']
 
 
 def test_make_valid_move():
@@ -67,6 +77,7 @@ def test_make_valid_move():
     as_json = json.loads(response.body)
     # The new board will have a 1 at the head of it
     assert as_json['board'] == '4' + as_json['board'][1:]
+    assert 'INCOMPLETE' == as_json['status']
 
 
 def test_make_multiple_moves():
@@ -82,6 +93,7 @@ def test_make_multiple_moves():
                                                  data=json.dumps(move))
         as_json = json.loads(response.body)
     assert as_json['board'] == '42' + as_json['board'][2:]
+    assert 'INCOMPLETE' == as_json['status']
 
 
 def test_that_trying_to_reuse_a_spot_fails():
@@ -99,3 +111,4 @@ def test_that_trying_to_reuse_a_spot_fails():
 
     # The second move should not be applied
     assert as_json['board'] == '4' + as_json['board'][1:]
+    assert 'INVALID' == as_json['status']
