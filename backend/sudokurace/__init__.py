@@ -3,7 +3,6 @@ import logging
 
 from sanic import Sanic
 from sanic.response import html
-
 from sanic_cors import CORS
 
 logging.getLogger().setLevel(logging.INFO)
