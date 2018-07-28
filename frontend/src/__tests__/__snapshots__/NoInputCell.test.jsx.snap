@@ -3,9 +3,16 @@
 exports[`Create a NoInputCell 1`] = `
 <input
   className="cell-input noinput"
-  id={undefined}
+  id="1"
   maxLength="1"
   readOnly="true"
+  style={
+    Object {
+      "fontSize": 10,
+      "height": 10,
+      "width": 10,
+    }
+  }
   value="1"
 />
 `;

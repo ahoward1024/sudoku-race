@@ -1,25 +1,32 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-class NoInputCell extends Component {
+function NoInputCell({cellSize, id, textScale, value}) {
 
-  render() {
+    const style = {
+      'fontSize': cellSize * textScale,
+      'height': cellSize,
+      'width': cellSize
+    };
+
     return (
       <input
-        key={this.props.id}
-        id={this.props.id}
+        key={id}
+        id={id}
+        style={style}
         className="cell-input noinput"
         maxLength="1"
-        value={this.props.value}
+        value={value}
         readOnly="true"
       />
     );
-  }
 }
 
 NoInputCell.propTypes = {
-  'id': PropTypes.string,
-  'value': PropTypes.string
+  'cellSize': PropTypes.number.isRequired,
+  'id': PropTypes.string.isRequired,
+  'textScale': PropTypes.number.isRequired,
+  'value': PropTypes.string.isRequired
 };
 
 export default NoInputCell;

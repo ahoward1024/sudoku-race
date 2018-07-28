@@ -26,10 +26,17 @@ class InputCell extends Component {
   }
 
   render() {
+    const style = {
+      'fontSize': this.props.cellSize * this.props.textScale,
+      'height': this.props.cellSize,
+      'width': this.props.cellSize
+    };
+
     return (
       <input
         key={this.state.id}
         id={this.state.id}
+        style={style}
         className="cell-input"
         onChange={this.handleKeyPress}
         value={this.state.value}
@@ -39,8 +46,10 @@ class InputCell extends Component {
 }
 
 InputCell.propTypes = {
-  'id': PropTypes.string,
-  'value': PropTypes.string
+  'cellSize': PropTypes.number.isRequired,
+  'id': PropTypes.string.isRequired,
+  'textScale': PropTypes.number.isRequired,
+  'value': PropTypes.string.isRequired
 };
 
 export default InputCell;

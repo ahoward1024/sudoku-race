@@ -13,6 +13,8 @@ global.fetch = require('jest-fetch-mock');
 Enzyme.configure({'adapter': new Adapter()});
 
 const url = 'http://foo.baz';
+const cellSize = 10;
+const textScale = 1.0;
 const fullBoard = '15248937673925684146837129538712465959176342824689' +
   '5713914637582625948137873512964';
 
@@ -26,7 +28,10 @@ describe('testing', () => {
         'board': fullBoard,
         'id': 0
       }), {'status': 200});
-    const wrapper = shallow(<Board url={url}/>);
+    const wrapper = await shallow(<Board
+                                  url={url}
+                                  cellSize={cellSize}
+                                  textScale={textScale}/>);
     await wrapper.instance().componentDidMount();
     // This will be 2 because we "call" intance().componentDidMount() to await on it
     expect(fetch.mock.calls.length).toEqual(2);
@@ -39,7 +44,10 @@ describe('testing', () => {
         'board': undefined,
         'id': 0
       }), {'status': 200});
-    const wrapper = shallow(<Board url={url}/>);
+    const wrapper = await shallow(<Board
+                                  url={url}
+                                  cellSize={cellSize}
+                                  textScale={textScale}/>);
     await wrapper.instance().componentDidMount();
     // This will be 2 because we "call" intance().componentDidMount() to await on it
     expect(fetch.mock.calls.length).toEqual(2);
@@ -49,7 +57,10 @@ describe('testing', () => {
 
   test('Board creation and fetch failure', async () => {
     fetch.mockRejectOnce('fake error (fetch calls fails)');
-    const wrapper = await shallow(<Board url={url}/>);
+    const wrapper = await shallow(<Board
+                                  url={url}
+                                  cellSize={cellSize}
+                                  textScale={textScale}/>);
     expect(fetch.mock.calls.length).toEqual(1);
     expect(fetch.mock.calls[0][0]).toEqual(url);
     expect(wrapper.state('board')).toEqual('');
