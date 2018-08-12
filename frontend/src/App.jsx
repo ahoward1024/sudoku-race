@@ -2,7 +2,10 @@ import React, {Component} from 'react';
 import './App.css';
 import Board from './Board';
 
+const URL = 'https://sudokurace.io';
+
 class App extends Component {
+
   constructor(props) {
     super(props);
     this.updateDimensions = this.updateDimensions.bind(this);
@@ -39,13 +42,13 @@ class App extends Component {
     // the input box very nicely to where the text was big but not overwhelming the element.
     // This is parameterized so we can quickly find it and change it in the future if need be
     // such as if we want to change fonts.
-    const textScale = 0.65;
+    const textScale = 0.85;
 
     return (
       <div>
         <h1 id="heading" align="center">Sudoku Race</h1>
         <div id="bdiv">
-          <Board url="https://sudokurace.io/game.create" cellSize={cellSize} textScale={textScale}/>
+          <Board url={URL} cellSize={cellSize} textScale={textScale}/>
         </div>
       </div>
     );
