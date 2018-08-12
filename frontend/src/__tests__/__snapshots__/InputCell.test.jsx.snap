@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Create an InputCell 1`] = `
+exports[`InputCell Testing Create an InputCell 1`] = `
 <input
   className="cell-input"
   id="1"
@@ -12,11 +12,11 @@ exports[`Create an InputCell 1`] = `
       "width": 10,
     }
   }
-  value=""
+  value="1"
 />
 `;
 
-exports[`Create an empty InputCell 1`] = `
+exports[`InputCell Testing Create an empty InputCell 1`] = `
 <input
   className="cell-input"
   id="1"
@@ -28,6 +28,6 @@ exports[`Create an empty InputCell 1`] = `
       "width": 10,
     }
   }
-  value=""
+  value="1"
 />
 `;
