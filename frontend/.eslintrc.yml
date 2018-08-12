@@ -250,8 +250,8 @@ rules:
     - error
     - last
   sort-imports: 'off'
-  sort-keys: error
-  sort-vars: error
+  sort-keys: 'off'
+  sort-vars: 'off'
   space-before-blocks: error
   space-before-function-paren: 'off'
   space-in-parens:
