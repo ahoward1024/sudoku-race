@@ -9,14 +9,17 @@ class Board extends Component {
     super(props);
     this.state = {
       'board': '',
-      'gameid': ''
+      'gameid': 0
     };
+
+    this.updateBoard = this.updateBoard.bind(this);
+    this.parseBoard = this.parseBoard.bind(this);
   }
 
-  static async fetchResponseJson(url, method = 'GET') {
+  static async fetchResponseJson(url) {
     let board = '';
     try {
-      const response = await fetch(url, {method});
+      const response = await fetch(url, {'method': 'PUT'});
       const json = await response.json();
       board = await json.board;
     } catch (error) {
@@ -27,16 +30,22 @@ class Board extends Component {
   }
 
   componentDidMount() {
-    return Board.fetchResponseJson(this.props.url, 'PUT').then(board => {
-            if (!(board === undefined)) {
+    const createBoardUrl = `${this.props.url}/game.create`;
+
+    return Board.fetchResponseJson(createBoardUrl).then(board => {
+            if (board !== undefined) {
               this.setState({board});
             }
           });
   }
 
-  static parseBoard(board, cellSize, textScale) {
+  updateBoard(board) {
+    this.setState({board});
+  }
+
+  parseBoard() {
     // First load of the board has no state
-    const isOnFirstLoad = board === '';
+    const isOnFirstLoad = this.state.board === '';
     const rows = [];
 
     let index = 0;
@@ -44,34 +53,39 @@ class Board extends Component {
     for (let perRow = 0; perRow < 9; perRow += 1) {
       const row = [];
       for (let perColumn = 0; perColumn < 9; perColumn += 1) {
-        const value = board[index];
+        const value = this.state.board[index];
         if (isOnFirstLoad || value === ' ') {
           // If the space is blank, create an empty InputCell
           row.push(<td
-                     key={`c${perRow}${perColumn}`}
-                     id={`c${perRow}${perColumn}`}
-                     className={`cell c${it}`}>
-                   <InputCell
-                     key={`I${perRow}${perColumn}`}
-                     id={`i${perRow}${perColumn}`}
-                     cellSize={cellSize}
-                     textScale={textScale}
-                     value={''}
-                     index={`${index}`}/>
-                   </td>);
+                    key={`c${perRow}${perColumn}`}
+                    id={`c${perRow}${perColumn}`}
+                    className={`cell c${it}`}>
+                    <InputCell
+                      key={`I${perRow}${perColumn}`}
+                      id={`i${perRow}${perColumn}`}
+                      gameid={this.state.gameid}
+                      index={index}
+                      cellSize={this.props.cellSize}
+                      textScale={this.props.textScale}
+                      value={''}
+                      updateBoard={this.updateBoard}
+                      url={this.props.url}
+                    />
+                    </td>);
         } else {
           row.push(<td
-                     key={`c${perRow}${perColumn}`}
-                     id={`c${perRow}${perColumn}`}
-                     className={`cell c${it}`}>
-                   <NoInputCell
-                     key={`N${perRow}${perColumn}`}
-                     id={`i${perRow}${perColumn}`}
-                     cellSize={cellSize}
-                     textScale={textScale}
-                     value={`${value}`}
-                     index={`${index}`}/>
-                   </td>);
+                    key={`c${perRow}${perColumn}`}
+                    id={`c${perRow}${perColumn}`}
+                    className={`cell c${it}`}>
+                    <NoInputCell
+                      key={`N${perRow}${perColumn}`}
+                      id={`i${perRow}${perColumn}`}
+                      cellSize={this.props.cellSize}
+                      textScale={this.props.textScale}
+                      value={`${value}`}
+                      index={`${index}`}
+                    />
+                    </td>);
         }
         if (it % 3 === 0) {
           it -= 3;
@@ -90,7 +104,7 @@ class Board extends Component {
   }
 
   render() {
-    const rows = Board.parseBoard(this.state.board, this.props.cellSize, this.props.textScale);
+    const rows = this.parseBoard();
 
     return (
       <div>
