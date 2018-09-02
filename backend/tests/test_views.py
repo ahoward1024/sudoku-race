@@ -20,8 +20,8 @@ def test_game_create_not_null():
 
 
 def test_game_move_not_null():
+    req_json = {'game_id': 0, 'pos': 0, 'char': '4'}
     app.test_client.put('/game.create')
-    req_json = {'id': 0, 'move': {'pos': 0, 'char': '4'}}
     request, response = app.test_client.post('/game.move',
                                              data=json.dumps(req_json))
     as_json = json.loads(response.body)
@@ -32,33 +32,18 @@ def test_game_move_not_null():
 
 def test_game_move_missing_json():
     request, response = app.test_client.post('/game.move')
-    as_json = json.loads(response.body)
-    assert 'INVALID' == as_json['status']
-    assert 'No json received' == as_json['message']
+    assert response.status == 500
 
 
-def test_game_move_missing_id():
-    req_json = {'move': {}}
+def test_game_move_invalid_dict():
+    req_json = {}
     request, response = app.test_client.post('/game.move',
                                              data=json.dumps(req_json))
-    as_json = json.loads(response.body)
-    assert 'INVALID' == as_json['status']
-    assert 'Missing id' == as_json['message']
-
-
-def test_game_move_missing_move():
-    req_json = {'id': 0}
-    request, response = app.test_client.post('/game.move',
-                                             data=json.dumps(req_json))
-    request, response = app.test_client.post('/game.move',
-                                             data=json.dumps(req_json))
-    as_json = json.loads(response.body)
-    assert 'INVALID' == as_json['status']
-    assert 'Missing move' == as_json['message']
+    assert response.status == 500
 
 
 def test_make_invalid_move():
-    req_json = {'id': 0, 'move': {'pos': 0, 'char': '8'}}
+    req_json = {'game_id': 0, 'pos': 0, 'char': '8'}
     create_req, create_resp = app.test_client.put('/game.create')
     created_board = json.loads(create_resp.body)['board']
     request, response = app.test_client.post('/game.move',
@@ -70,7 +55,7 @@ def test_make_invalid_move():
 
 
 def test_make_valid_move():
-    req_json = {'id': 0, 'move': {'pos': 0, 'char': '4'}}
+    req_json = {'game_id': 0, 'pos': 0, 'char': '4'}
     create_req, create_resp = app.test_client.put('/game.create')
     request, response = app.test_client.post('/game.move',
                                              data=json.dumps(req_json))
@@ -84,8 +69,8 @@ def test_make_multiple_moves():
     app.test_client.put('/game.create')
 
     moves = [
-        {'id': 0, 'move': {'pos': 0, 'char': '4'}},
-        {'id': 0, 'move': {'pos': 1, 'char': '2'}}
+        {'game_id': 0, 'pos': 0, 'char': '4'},
+        {'game_id': 0, 'pos': 1, 'char': '2'}
     ]
 
     for move in moves:
@@ -100,8 +85,8 @@ def test_that_trying_to_reuse_a_spot_fails():
     app.test_client.put('/game.create')
 
     moves = [
-        {'id': 0, 'move': {'pos': 0, 'char': '4'}},
-        {'id': 0, 'move': {'pos': 0, 'char': '2'}}
+        {'game_id': 0, 'pos': 0, 'char': '4'},
+        {'game_id': 0, 'pos': 0, 'char': '2'}
     ]
 
     for move in moves:

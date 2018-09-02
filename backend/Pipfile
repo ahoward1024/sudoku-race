@@ -6,6 +6,10 @@ name = "pypi"
 [packages]
 sanic = "*"
 sanic-cors = "*"
+attrs = "*"
+cattrs = "*"
+marshmallow = "*"
+marshmallow-enum = "*"
 
 [dev-packages]
 "flake8" = "*"
@@ -31,3 +35,6 @@ aiohttp = "*"
 
 [requires]
 python_version = "3.6"
+
+[pipenv]
+allow_prereleases = true
