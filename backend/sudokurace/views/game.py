@@ -11,7 +11,7 @@ async def root(req):
     return json(created_game)
 
 
-@app.route('/game.move', methods=['POST'])
+@app.route('/game.move', methods=['POST', 'OPTIONS'])
 async def move(req):
     if not req.json:
         return json({'status': Status.INVALID, 'message': 'No json received'})

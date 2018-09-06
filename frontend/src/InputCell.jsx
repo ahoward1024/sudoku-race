@@ -13,7 +13,7 @@ class InputCell extends Component {
     try {
       const response = await fetch(url, {
         'method': 'POST',
-        'header': {
+        'headers': {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
