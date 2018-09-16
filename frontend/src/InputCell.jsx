@@ -18,11 +18,9 @@ class InputCell extends Component {
           'Content-Type': 'application/json'
         },
         'body': JSON.stringify({
-          'id': this.props.gameid,
-          'move': {
-            'pos': this.props.index,
-            'char': value
-          }
+          'game_id': this.props.gameid,
+          'pos': this.props.index,
+          'char': value
         })
       });
       const json = await response.json();
