@@ -38,7 +38,7 @@ resource "aws_route53_record" "redirect" {
 
 resource "aws_launch_configuration" "backend" {
   image_id = "ami-8c0d44f4"
-  instance_type = "t2.micro"
+  instance_type = "t3.nano"
   key_name = "sudokurace"
   iam_instance_profile = "SudokuRaceBackendRole"
   security_groups = ["${aws_security_group.backend.id}"]
