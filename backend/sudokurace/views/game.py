@@ -30,3 +30,7 @@ async def move(req):
     return json(next_board_state)
 
 
+@app.route('/game.reset', methods=['GET'])
+async def reset(req):
+    state.reset_all_state()
+    return json({})

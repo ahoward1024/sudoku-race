@@ -97,3 +97,8 @@ def test_that_trying_to_reuse_a_spot_fails():
     # The second move should not be applied
     assert as_json['board'] == '4' + as_json['board'][1:]
     assert 'INVALID' == as_json['status']
+
+
+def test_that_reset_returns_200():
+    req, resp = app.test_client.get('/game.reset')
+    assert resp.status == 200
