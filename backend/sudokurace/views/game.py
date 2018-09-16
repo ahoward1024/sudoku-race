@@ -2,7 +2,7 @@
 import cattr
 from sanic.response import json
 from sanic.exceptions import ServerError
-from sudokurace import app
+from sudokurace.app import app
 from sudokurace.models import state
 from sudokurace.models.move import Move
 from sudokurace.dtos.move import (

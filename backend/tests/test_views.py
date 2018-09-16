@@ -3,7 +3,7 @@ import json
 import logging
 
 import pytest
-from sudokurace import app
+from sudokurace.app import app
 from sudokurace.models.state import reset_all_state
 
 
