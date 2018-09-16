@@ -8,7 +8,6 @@ from sudokurace.models.move import Move
 from sudokurace.dtos.move import (
     MoveRequestDTO,
     MoveRequestDTOSchema,
-    MoveResponseDTOSchema,
 )
 
 
@@ -28,10 +27,6 @@ async def move(req):
     move_dto = cattr.structure(validated, MoveRequestDTO)
     move = Move.from_dto(move_dto)
     next_board_state = state.make_move(move_dto.game_id, move)
-
-    response_as_dict = cattr.unstructure(next_board_state)
-
-    if MoveResponseDTOSchema().validate(response_as_dict):
-        raise ServerError('Bad request', status_code=500)
-
     return json(next_board_state)
+
+
