@@ -91,7 +91,7 @@ resource "aws_autoscaling_group" "backend" {
   availability_zones = ["${data.aws_availability_zones.all.names}"]
 
   min_size = 1
-  max_size = 1
+  max_size = 2
 
   target_group_arns = ["${aws_alb_target_group.alb.arn}"]
 
