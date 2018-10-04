@@ -1,28 +1,36 @@
 #!/usr/bin/env python3.6
+import cattr
 from sanic.response import json
-from sudokurace import app
+from sanic.exceptions import ServerError
+from sudokurace.app import app
 from sudokurace.models import state
-from sudokurace.models.state import Status
+from sudokurace.models.move import Move
+from sudokurace.dtos.move import (
+    MoveRequestDTO,
+    MoveRequestDTOSchema,
+)
 
 
 @app.route('/game.create', methods=['PUT', 'OPTIONS'])
 async def root(req):
     created_game = state.create_game()
-    return json(created_game)
+    game_as_dict = cattr.unstructure(created_game)
+    return json(game_as_dict)
 
 
 @app.route('/game.move', methods=['POST', 'OPTIONS'])
 async def move(req):
-    if not req.json:
-        return json({'status': Status.INVALID, 'message': 'No json received'})
+    if req.json == {} or MoveRequestDTOSchema().validate(req.json):
+        raise ServerError('Bad request', status_code=500)
 
-    if 'id' not in req.json:
-        return json({'status': Status.INVALID, 'message': 'Missing id'})
-
-    if 'move' not in req.json:
-        return json({'status': Status.INVALID, 'message': 'Missing move'})
-
-    game_id = req.json['id']
-    game_move = req.json['move']
-    next_board_state = state.make_move(game_id, game_move)
+    validated = MoveRequestDTOSchema().load(req.json)
+    move_dto = cattr.structure(validated, MoveRequestDTO)
+    move = Move.from_dto(move_dto)
+    next_board_state = state.make_move(move_dto.game_id, move)
     return json(next_board_state)
+
+
+@app.route('/game.reset', methods=['GET'])
+async def reset(req):
+    state.reset_all_state()
+    return json({})
