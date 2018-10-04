@@ -18,7 +18,7 @@ async def root(req):
     return json(game_as_dict)
 
 
-@app.route('/game.move', methods=['POST'])
+@app.route('/game.move', methods=['POST', 'OPTIONS'])
 async def move(req):
     if req.json == {} or MoveRequestDTOSchema().validate(req.json):
         raise ServerError('Bad request', status_code=500)
