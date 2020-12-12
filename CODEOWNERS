@@ -1,9 +1,0 @@
-# Things outside of their respective folders (Terraform, Docker, CircleCI)
-# default to Aaron
-* @abatilo
-
-# Backend code defaults to being owned by Aaron
-/backend/ @abatilo
-
-# Frontend code defaults to being owned by Alex
-/frontend/ @ahoward1024
