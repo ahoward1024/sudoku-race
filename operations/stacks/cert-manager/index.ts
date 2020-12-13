@@ -21,7 +21,7 @@ export default async (): Promise<void> => {
   });
 
   const clusterIssuer = new k8s.apiextensions.CustomResource("cluster-issuer", {
-    apiVersion: "cert-manager.io/valpha2",
+    apiVersion: "cert-manager.io/v1alpha2",
     kind: "ClusterIssuer",
     metadata: {
       namespace: certManagerNamespace.metadata.name,
