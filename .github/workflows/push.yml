@@ -23,6 +23,8 @@ jobs:
           echo "::set-output name=matrix::${matrix}"
   master:
     name: Master
+    needs:
+      - stack-matrix
     runs-on: ubuntu-20.04
     strategy:
       fail-fast: false
