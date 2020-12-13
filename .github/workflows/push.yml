@@ -35,6 +35,8 @@ jobs:
         uses: asdf-vm/actions/setup@v1
         with:
           asdf_branch: "v0.8.0"
+      - name: asdf_install
+        uses: asdf-vm/actions/install@v1
       - name: Install just pulumi
         run: |
           asdf install pulumi
