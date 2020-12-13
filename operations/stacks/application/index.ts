@@ -35,7 +35,6 @@ export default async (): Promise<void> => {
           maxUnavailable: 0,
         },
       },
-      replicas: 1,
       selector: { matchLabels: appLabels },
       template: {
         metadata: {
@@ -55,12 +54,12 @@ export default async (): Promise<void> => {
               ],
               resources: {
                 requests: {
-                  cpu: "200m",
-                  memory: "200Mi",
+                  cpu: "500m",
+                  memory: "500Mi",
                 },
                 limits: {
-                  cpu: "200m",
-                  memory: "200Mi",
+                  cpu: "500m",
+                  memory: "500Mi",
                 },
               },
             },
@@ -97,6 +96,22 @@ export default async (): Promise<void> => {
     spec: {
       maxUnavailable: 0,
       selector: deployment.spec.selector,
+    },
+  });
+
+  const hpa = new k8s.autoscaling.v1.HorizontalPodAutoscaler(appName, {
+    metadata: {
+      namespace: deployment.metadata.namespace,
+    },
+    spec: {
+      scaleTargetRef: {
+        apiVersion: "apps/v1",
+        kind: "Deployment",
+        name: deployment.metadata.name,
+      },
+      minReplicas: 2,
+      maxReplicas: 5,
+      targetCPUUtilizationPercentage: 80,
     },
   });
 
