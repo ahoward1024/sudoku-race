@@ -103,7 +103,7 @@ export default async (): Promise<void> => {
       repo: "https://prometheus-community.github.io/helm-charts",
     },
     chart: "prometheus",
-    version: "1.27.0",
+    version: "12.0.1",
     values: {
       alertmanager: {
         enabled: false,
@@ -142,6 +142,9 @@ export default async (): Promise<void> => {
             value: "5755",
           },
         ],
+      },
+      image: {
+        tag: "v2.19.2",
       },
     },
   });
