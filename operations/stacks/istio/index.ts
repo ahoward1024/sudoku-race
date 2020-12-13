@@ -79,4 +79,21 @@ export default async (): Promise<void> => {
       ],
     },
   });
+
+  const kiali = new k8s.helm.v3.Chart("kiali", {
+    namespace: "operations",
+    fetchOpts: {
+      repo: "https://kiali.org/helm-charts",
+    },
+    chart: "kiali-server",
+    version: "1.27.0",
+    values: {
+      auth: {
+        strategy: "anonymous",
+      },
+      login_token: {
+        signing_key: "a34eb6trqH9mlrSd",
+      },
+    },
+  });
 };
