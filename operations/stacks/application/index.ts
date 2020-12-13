@@ -1,6 +1,5 @@
 import * as docker from "@pulumi/docker";
 import * as k8s from "@pulumi/kubernetes";
-import * as kx from "@pulumi/kubernetesx";
 import * as pulumi from "@pulumi/pulumi";
 
 export default async (): Promise<void> => {
@@ -15,6 +14,9 @@ export default async (): Promise<void> => {
     build: {
       context: "../",
       dockerfile: "../Dockerfile",
+      cacheFrom: {
+        stages: ["builder"],
+      },
     },
     registry: {
       server: "ghcr.io/abatilo",
