@@ -9,18 +9,23 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   AWS_REGION: ${{ secrets.AWS_REGION }}
 jobs:
+  stack-matrix:
+    runs-on: ubuntu-20.04
+    outputs:
+      matrix: ${{ steps.stack-matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - id: stack-matrix
+        # Find all leaf level directories and reduce into JSON object
+        run: |
+          matrix="$(find operations/stacks -mindepth 1 -maxdepth 1 -type d | cut -c 19- | jq -R '[.]' | jq -sc 'add | {stack: .}')"
+          echo "::set-output name=matrix::${matrix}"
   master:
     name: Master
     runs-on: ubuntu-20.04
     strategy:
       fail-fast: false
-      matrix:
-        stack:
-          - core
-          - cert-manager
-          - metrics-server
-          - istio
-          - application
+      matrix: ${{ fromJson(needs.terraform-matrix.outputs.matrix) }}
     steps:
       - uses: actions/checkout@v2.3.4
       - name: "Filter out unneeded dependencies"
