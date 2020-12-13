@@ -26,9 +26,11 @@ export default async (): Promise<void> => {
     containers: [
       {
         image: image.imageName,
-        ports: {
-          http: 8000,
-        },
+        ports: [
+          {
+            containerPort: 8000,
+          },
+        ],
       },
     ],
   });
@@ -41,7 +43,16 @@ export default async (): Promise<void> => {
       strategy: { rollingUpdate: { maxUnavailable: 0 } },
     }),
   });
-  const service = deployment.createService();
+  const service = deployment.createService({
+    ports: [
+      {
+        port: 80,
+        targetPort: 8000,
+        protocol: "HTTP",
+        name: "http",
+      },
+    ],
+  });
 
   const pdb = new k8s.policy.v1beta1.PodDisruptionBudget(appName, {
     metadata: {
