@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sudoku-race
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sudoku-race
+  template:
+    metadata:
+      labels:
+        app: sudoku-race
+    spec:
+      containers:
+        - name: sudoku-race
+          image: sudoku-race
+          ports:
+            - name: http
+              containerPort: 8000
+              protocol: TCP

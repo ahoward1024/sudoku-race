@@ -1,4 +1,4 @@
-FROM python:3.9.1-slim-buster as builder
+FROM python:3.9.1-slim as builder
 
 WORKDIR /app
 COPY ./pyproject.toml ./poetry.lock ./
