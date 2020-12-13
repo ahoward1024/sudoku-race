@@ -1,0 +1,5 @@
+name: sudoku-race
+runtime: nodejs
+description: Competitive sudoku
+backend:
+  url: s3://abatilo/infra/sudoku-race/

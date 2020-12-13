@@ -7,7 +7,12 @@ on:
 jobs:
   master:
     name: Master
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix:
+        stack:
+          - metrics-server
     steps:
       - uses: actions/checkout@v2.3.4
       - name: asdf setup
@@ -17,7 +22,13 @@ jobs:
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.CIVO_KUBECONFIG }}
-        id: setcontext
 
       - run: |
           kubectl get pods --all-namespaces
+
+      - name: Deploy
+        working-directory: "./operations"
+        env:
+          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
+        run: |
+          pulumi up -s ${{ matrix.stack }} --yes --skip-preview --suppress-outputs --suppress-permalink
