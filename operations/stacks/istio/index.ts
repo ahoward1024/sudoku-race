@@ -96,4 +96,53 @@ export default async (): Promise<void> => {
       },
     },
   });
+
+  const prometheus = new k8s.helm.v3.Chart("prometheus", {
+    namespace: "istio-system",
+    fetchOpts: {
+      repo: "https://prometheus-community.github.io/helm-charts",
+    },
+    chart: "prometheus",
+    version: "1.27.0",
+    values: {
+      alertmanager: {
+        enabled: false,
+      },
+      pushgateway: {
+        enabled: false,
+      },
+      kubeStateMetrics: {
+        enabled: false,
+      },
+      nodeExporter: {
+        enabled: false,
+      },
+      server: {
+        podAnnotations: {
+          "sidecar.istio.io/inject": "false",
+        },
+        persistentVolume: {
+          enabled: false,
+        },
+        // Use port 9090 to match Istio documentation
+        service: {
+          servicePort: 9090,
+        },
+        readinessProbeInitialDelay: 0,
+        // Speed up scraping a bit from the default
+        global: {
+          scrape_interval: "15s",
+        },
+        // Match legacy addon deployment
+        fullnameOverride: "prometheus",
+        env: [
+          // https://github.com/prometheus/prometheus/issues/7286
+          {
+            name: "JAEGER_AGENT_PORT",
+            value: "5755",
+          },
+        ],
+      },
+    },
+  });
 };
