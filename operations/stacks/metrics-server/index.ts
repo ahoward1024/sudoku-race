@@ -7,14 +7,11 @@ export default async (): Promise<void> => {
       repo: "https://charts.bitnami.com/bitnami",
     },
     chart: "metrics-server",
-    version: "4.3.2",
+    version: "5.2.0",
     values: {
-      args: [
-        "--logtostderr",
-        "--kubelet-insecure-tls",
-        "--metric-resolution=2s",
-        "--kubelet-preferred-address-types=InternalIP",
-      ],
+      apiService: {
+        create: true,
+      },
     },
     transformations: [
       (obj: any) => {
