@@ -114,7 +114,7 @@ export default async (): Promise<void> => {
         kind: "Deployment",
         name: deployment.metadata.name,
       },
-      minReplicas: 2,
+      minReplicas: 1,
       maxReplicas: 5,
       targetCPUUtilizationPercentage: 80,
     },
