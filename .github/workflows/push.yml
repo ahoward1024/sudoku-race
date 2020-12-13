@@ -47,6 +47,11 @@ jobs:
         run: |
           npm ci
 
+      - name: Create lock
+        uses: abatilo/github-action-locks@master
+        with:
+          name: "sudoku-race-${{ github.workflow }}"
+
       - name: Deploy
         working-directory: "./operations"
         env:
