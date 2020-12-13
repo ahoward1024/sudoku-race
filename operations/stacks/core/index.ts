@@ -7,4 +7,11 @@ export default async (): Promise<void> => {
       labels: { "istio-injection": "enabled" },
     },
   });
+
+  const applicationsNamespace = new k8s.core.v1.Namespace("applications", {
+    metadata: {
+      name: "applications",
+      labels: { "istio-injection": "enabled" },
+    },
+  });
 };
