@@ -54,7 +54,7 @@ export default async (): Promise<void> => {
   );
 
   const gateway = new k8s.apiextensions.CustomResource("global-gateway", {
-    apiVersion: "networking.istio.io/v1beta2",
+    apiVersion: "networking.istio.io/v1alpha3",
     kind: "Gateway",
     metadata: {
       namespace: "istio-system",
