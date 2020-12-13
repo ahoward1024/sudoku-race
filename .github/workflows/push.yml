@@ -17,6 +17,7 @@ jobs:
       matrix:
         stack:
           - metrics-server
+          - core
     steps:
       - uses: actions/checkout@v2.3.4
       - name: asdf setup
