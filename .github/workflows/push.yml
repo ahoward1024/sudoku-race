@@ -18,6 +18,7 @@ jobs:
       - id: stack-matrix
         # Find all leaf level directories and reduce into JSON object
         run: |
+          find operations/stacks -mindepth 1 -maxdepth 1 -type d | cut -c 19- | jq -R '[.]' | jq -sc 'add | {stack: .}'
           matrix="$(find operations/stacks -mindepth 1 -maxdepth 1 -type d | cut -c 19- | jq -R '[.]' | jq -sc 'add | {stack: .}')"
           echo "::set-output name=matrix::${matrix}"
   master:
