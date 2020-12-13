@@ -6,12 +6,13 @@ import uvicorn
 
 
 async def homepage(request):
-    return JSONResponse({"foo": "bar"})
+    return JSONResponse({"foo": "baz"})
 
 
 async def slow(request):
     await asyncio.sleep(10)
     return JSONResponse({"slow": "slow"})
+
 
 app = Starlette(
     debug=True,
@@ -20,6 +21,7 @@ app = Starlette(
         Route("/slow", slow),
     ],
 )
+
 
 def main():
     uvicorn.run(app, host="0.0.0.0", port=8000)

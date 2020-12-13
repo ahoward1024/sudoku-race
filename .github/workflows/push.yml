@@ -19,10 +19,42 @@ jobs:
       - id: stack-matrix
         # Find all leaf level directories and reduce into JSON object
         run: |
-          find operations/stacks -mindepth 1 -maxdepth 1 -type d | cut -c 19- | jq -R '[.]' | jq -sc 'add | {stack: .}'
           matrix="$(find operations/stacks -mindepth 1 -maxdepth 1 -type d | cut -c 19- | jq -R '[.]' | jq -sc 'add | {stack: .}')"
           echo "::set-output name=matrix::${matrix}"
-  master:
+  ci:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - name: Fetch python version to match what is in .tool-versions
+        id: python-version
+        run: |
+          version="$(asdf current python | awk '{printf $2}')"
+          echo "::set-output name=version::${version}"
+
+        # We install via setup-python because GitHub caches version artifacts
+        # We could install via asdf but for CI that would be far too slow. It takes ~5-10 minutes each time
+        # This is fine for local development since it only has to happen once instead of every build
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ steps.python-version.outputs.version }}
+
+      - name: Install asdf on the Action Runner
+        uses: asdf-vm/actions/setup@v1
+        with:
+          asdf_branch: "v0.8.0"
+      - name: Fetch asdf plugins repo
+        uses: asdf-vm/actions/plugins-add@v1
+      - name: Install poetry
+        run: |
+          asdf install poetry
+      - name: Run black linter
+        run: |
+          poetry run black --check .
+      - name: Run pytest
+          poetry run pytest --cov=./sudokurace ./tests
+
+  deploy:
     needs:
       - stack-matrix
     runs-on: ubuntu-20.04
@@ -35,7 +67,7 @@ jobs:
         uses: asdf-vm/actions/setup@v1
         with:
           asdf_branch: "v0.8.0"
-      - name: Fetch pulumi plugins repo
+      - name: Fetch asdf plugins repo
         uses: asdf-vm/actions/plugins-add@v1
       - name: Install just pulumi
         run: |

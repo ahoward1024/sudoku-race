@@ -6,7 +6,6 @@ RUN pip install poetry==1.1.4 && \
       poetry install
 
 COPY . .
-RUN poetry run pytest --cov=./sudokurace ./tests
 RUN pip install .
 
 FROM python:3.9.1-slim-buster

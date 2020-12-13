@@ -43,6 +43,10 @@ clean: ## Delete local dev environment
 test: tmp/.poetry-installs ## Run all tests with coverage
 	@-poetry run pytest --cov=./sudokurace ./tests
 
+.PHONY: format
+format: tmp/.poetry-installs ## Format all of your python code
+	@-poetry run black .
+
 .PHONY: up
 up: tmp/.bootstrap ## Run a local development environment
 	tilt up --context kind-$(PROJECT_NAME) --hud
