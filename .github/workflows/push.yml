@@ -38,6 +38,7 @@ jobs:
         run: |
           version="$(asdf current python | awk '{printf $2}')"
           echo "::set-output name=version::${version}"
+          echo $version
 
         # We install via setup-python because GitHub caches version artifacts
         # We could install via asdf but for CI that would be far too slow. It takes ~5-10 minutes each time
