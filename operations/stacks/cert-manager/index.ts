@@ -8,7 +8,7 @@ export default async (): Promise<void> => {
     },
   });
 
-  const certManager = new k8s.helm.v3.Chart("certManager", {
+  const certManager = new k8s.helm.v3.Chart("cert-manager", {
     namespace: "cert-manager",
     fetchOpts: {
       repo: "https://charts.jetstack.io",
