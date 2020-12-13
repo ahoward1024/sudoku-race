@@ -19,6 +19,7 @@ jobs:
           - core
           - cert-manager
           - metrics-server
+          - istio
     steps:
       - uses: actions/checkout@v2.3.4
       - name: asdf setup
