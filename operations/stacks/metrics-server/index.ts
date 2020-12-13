@@ -12,6 +12,12 @@ export default async (): Promise<void> => {
       apiService: {
         create: true,
       },
+      args: [
+        "--logtostderr",
+        "--kubelet-insecure-tls",
+        "--metric-resolution=2s",
+        "--kubelet-preferred-address-types=InternalIP",
+      ],
     },
     transformations: [
       (obj: any) => {
