@@ -40,7 +40,9 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+
       - name: Install npm dependencies
+        working-directory: "./operations"
         run: |
           npm ci
 
