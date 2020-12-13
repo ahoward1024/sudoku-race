@@ -48,7 +48,6 @@ export default async (): Promise<void> => {
       {
         port: 80,
         targetPort: 8000,
-        protocol: "HTTP",
         name: "http",
       },
     ],
