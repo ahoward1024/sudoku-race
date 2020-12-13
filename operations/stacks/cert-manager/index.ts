@@ -19,4 +19,31 @@ export default async (): Promise<void> => {
       installCRDs: true,
     },
   });
+
+  const clusterIssuer = new k8s.apiextensions.CustomResource("cluster-issuer", {
+    apiVersion: "cert-manager.io/valpha2",
+    kind: "ClusterIssuer",
+    metadata: {
+      namespace: certManagerNamespace.metadata.name,
+      name: "letsencrypt",
+    },
+    spec: {
+      acme: {
+        server: "https://acme-v02.api.letsencrypt.org/directory",
+        email: "AaronBatilo@gmail.com",
+        privateKeySecretRef: {
+          name: "letsencrypt",
+        },
+        solvers: [
+          {
+            http01: {
+              ingress: {
+                class: "istio",
+              },
+            },
+          },
+        ],
+      },
+    },
+  });
 };
