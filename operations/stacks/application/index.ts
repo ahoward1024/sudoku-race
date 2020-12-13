@@ -14,6 +14,9 @@ export default async (): Promise<void> => {
     build: {
       context: "../",
       dockerfile: "../Dockerfile",
+      env: {
+        DOCKER_BUILDKIT: "1",
+      },
       cacheFrom: {
         stages: ["builder"],
       },
