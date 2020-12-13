@@ -51,7 +51,7 @@ jobs:
       - name: Create lock
         uses: abatilo/github-action-locks@master
         with:
-          name: "sudoku-race-${{ github.workflow }}"
+          name: "sudoku-race-${{ github.workflow }}-${{ matrix.stack }}"
 
       - name: Deploy
         working-directory: "./operations"
