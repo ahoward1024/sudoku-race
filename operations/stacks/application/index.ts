@@ -169,6 +169,10 @@ export default async (): Promise<void> => {
               },
             },
           ],
+          retries: {
+            attempts: 3,
+            perTryTimeout: "2s",
+          },
         },
       ],
     },
