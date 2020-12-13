@@ -44,38 +44,27 @@ jobs:
           method: kubeconfig
           kubeconfig: ${{ secrets.CIVO_KUBECONFIG }}
 
-      # npm dependencies
-      - name: Cache node modules
+      # pulumi dependencies
+      - name: Cache pulumi dependencies
         uses: actions/cache@v2
         env:
-          cache-name: cache-node-modules
+          cache-name: cache-pulumi
         with:
-          path: ./operations/node_modules
+          path: |
+            ~/.npm
+            ~/.pulumi/plugins
+            ./operations/node_modules
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-      # pulumi plugins
-      - name: Cache pulumi plugins
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-pulumi-plugins
-        with:
-          path: ~/.pulumi/plugins
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-
       - name: Install pulumi dependencies
         working-directory: "./operations"
         env:
           PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
         run: |
           npm ci
-          pulumi plugin install
 
       - name: Create lock
         uses: abatilo/github-action-locks@master
