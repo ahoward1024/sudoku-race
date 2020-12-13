@@ -81,7 +81,7 @@ export default async (): Promise<void> => {
   });
 
   const kiali = new k8s.helm.v3.Chart("kiali", {
-    namespace: "operations",
+    namespace: "istio-system",
     fetchOpts: {
       repo: "https://kiali.org/helm-charts",
     },
