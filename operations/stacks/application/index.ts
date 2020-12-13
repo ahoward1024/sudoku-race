@@ -7,6 +7,7 @@ export default async (): Promise<void> => {
   const config = new pulumi.Config();
   const pat = config.requireSecret("pat");
   const appName = "sudoku-race";
+  const appLabels = { app: appName, version: "v1" };
 
   // Build and push docker image to GitHub Container Registry
   const image = new docker.Image(appName, {
@@ -22,35 +23,71 @@ export default async (): Promise<void> => {
     },
   });
 
-  const pod = new kx.PodBuilder({
-    containers: [
-      {
-        image: image.imageName,
-        ports: [
-          {
-            containerPort: 8000,
-          },
-        ],
-      },
-    ],
-  });
-  const deployment = new kx.Deployment(appName, {
+  // Build Deployment spec
+  const deployment = new k8s.apps.v1.Deployment(appName, {
     metadata: {
+      labels: appLabels,
       namespace: "applications",
     },
-    spec: pod.asDeploymentSpec({
-      replicas: 1,
-      strategy: { rollingUpdate: { maxUnavailable: 0 } },
-    }),
-  });
-  const service = deployment.createService({
-    ports: [
-      {
-        port: 80,
-        targetPort: 8000,
-        name: "http",
+    spec: {
+      strategy: {
+        rollingUpdate: {
+          maxUnavailable: 0,
+        },
       },
-    ],
+      replicas: 1,
+      selector: { matchLabels: appLabels },
+      template: {
+        metadata: {
+          labels: appLabels,
+        },
+        spec: {
+          containers: [
+            {
+              name: "sudoku-race",
+              image: image.imageName,
+              ports: [
+                {
+                  name: "http",
+                  containerPort: 8000,
+                  protocol: "TCP",
+                },
+              ],
+              resources: {
+                requests: {
+                  cpu: "200m",
+                  memory: "200Mi",
+                },
+                limits: {
+                  cpu: "200m",
+                  memory: "200Mi",
+                },
+              },
+            },
+          ],
+        },
+      },
+    },
+  });
+
+  // Build Service spec
+  const service = new k8s.core.v1.Service(appName, {
+    metadata: {
+      labels: appLabels,
+      namespace: deployment.metadata.namespace,
+    },
+    spec: {
+      selector: appLabels,
+      type: "ClusterIP",
+      ports: [
+        {
+          name: "http",
+          port: 80,
+          targetPort: "http",
+          protocol: "TCP",
+        },
+      ],
+    },
   });
 
   const pdb = new k8s.policy.v1beta1.PodDisruptionBudget(appName, {
@@ -67,7 +104,7 @@ export default async (): Promise<void> => {
     apiVersion: "cert-manager.io/v1",
     kind: "Certificate",
     metadata: {
-      namespace: deployment.metadata.namespace,
+      namespace: "istio-system",
     },
     spec: {
       commonName: "sudokurace.civo.aaronbatilo.dev",
@@ -95,9 +132,13 @@ export default async (): Promise<void> => {
           port: {
             number: 443,
             name: "https",
-            protocol: "HTTP",
+            protocol: "HTTPS",
           },
           hosts: ["sudokurace.civo.aaronbatilo.dev"],
+          tls: {
+            mode: "SIMPLE",
+            credentialName: "sudoku-race-cert",
+          },
         },
       ],
     },
@@ -125,21 +166,6 @@ export default async (): Promise<void> => {
             {
               destination: {
                 host: service.metadata.name,
-              },
-              headers: {
-                response: {
-                  add: {
-                    "Strict-Transport-Security":
-                      "max-age=31536000; includeSubDomains",
-                    "Content-Security-Policy": "upgrade-insecure-requests",
-                    "X-Frame-Options": "SAMEORIGIN",
-                    "X-Content-Type-Options": "nosniff",
-                    "Referrer-Policy": "no-referrer-when-downgrade",
-                    "X-XSS-Protection": "1; mode=block",
-                    "Feature-Policy":
-                      "geolocation none; midi none; notifications none; push none; sync-xhr none; microphone none; camera none; magnetometer none; gyroscope none; speaker self; vibrate none; fullscreen self; payment none;",
-                  },
-                },
               },
             },
           ],
