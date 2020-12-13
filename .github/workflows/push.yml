@@ -38,6 +38,7 @@ jobs:
       - name: Install poetry
         run: |
           asdf install poetry
+          poetry install
       - name: Run black linter
         run: |
           poetry run black --check .
