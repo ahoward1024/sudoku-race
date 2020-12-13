@@ -1,5 +1,6 @@
 name: Push to master
 on:
+  pull_request: {}
   push:
     branches:
       - master
@@ -81,7 +82,16 @@ jobs:
         with:
           name: "sudoku-race-${{ matrix.stack }}"
 
+      - name: Preview
+        if: github.event_name == 'pull_request'
+        working-directory: "./operations"
+        env:
+          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
+        run: |
+          pulumi preview -s ${{ matrix.stack }} --diff --suppress-outputs --suppress-permalink
+
       - name: Deploy
+        if: github.event_name == 'push'
         working-directory: "./operations"
         env:
           PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
