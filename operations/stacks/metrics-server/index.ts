@@ -12,7 +12,7 @@ export default async (): Promise<void> => {
       apiService: {
         create: true,
       },
-      args: [
+      extraArgs: [
         "--logtostderr",
         "--kubelet-insecure-tls",
         "--metric-resolution=2s",
