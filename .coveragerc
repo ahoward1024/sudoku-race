@@ -1,0 +1,4 @@
+[run]
+omit =
+    # Ignore this file since it's for application setup only
+    sudokurace/entrypoint.py

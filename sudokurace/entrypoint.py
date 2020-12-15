@@ -1,26 +1,10 @@
-from starlette.applications import Starlette
-from starlette.responses import JSONResponse
-from starlette.routing import Route
-import asyncio
+# This file is exempt from coverage since it's just application logic setup
+from sudokurace.server.application import Application
 import uvicorn
 
 
-async def homepage(request):
-    return JSONResponse({"foo": "baz"})
-
-
-async def slow(request):
-    await asyncio.sleep(10)
-    return JSONResponse({"slow": "slow"})
-
-
-app = Starlette(
-    debug=True,
-    routes=[
-        Route("/", homepage),
-        Route("/slow", slow),
-    ],
-)
+application = Application("sudokurace")
+app = application.server()
 
 
 def main():

@@ -1,2 +1,5 @@
+/Dockerfile
+/Tiltfile
 /dist
 /operations
+/tmp
