@@ -1,4 +1,3 @@
-# This file is exempt from coverage since it's just application logic setup
 from sudokurace.server.application import Application
 import uvicorn
 
