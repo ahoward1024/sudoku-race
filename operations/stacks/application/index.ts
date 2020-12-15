@@ -127,8 +127,8 @@ export default async (): Promise<void> => {
       namespace: "istio-system",
     },
     spec: {
-      commonName: "sudokurace.civo.aaronbatilo.dev",
-      dnsNames: ["sudokurace.civo.aaronbatilo.dev"],
+      commonName: "sudokuraceapi.civo.aaronbatilo.dev",
+      dnsNames: ["sudokuraceapi.civo.aaronbatilo.dev"],
       issuerRef: {
         name: "letsencrypt",
         kind: "ClusterIssuer",
@@ -154,7 +154,7 @@ export default async (): Promise<void> => {
             name: "https",
             protocol: "HTTPS",
           },
-          hosts: ["sudokurace.civo.aaronbatilo.dev"],
+          hosts: ["sudokuraceapi.civo.aaronbatilo.dev"],
           tls: {
             mode: "SIMPLE",
             credentialName: "sudoku-race-cert",
@@ -171,7 +171,7 @@ export default async (): Promise<void> => {
       namespace: deployment.metadata.namespace,
     },
     spec: {
-      hosts: ["sudokurace.civo.aaronbatilo.dev"],
+      hosts: ["sudokuraceapi.civo.aaronbatilo.dev"],
       gateways: [gateway.metadata.name],
       http: [
         {
