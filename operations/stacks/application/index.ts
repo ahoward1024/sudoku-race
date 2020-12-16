@@ -195,6 +195,26 @@ export default async (): Promise<void> => {
           match: [
             {
               uri: {
+                prefix: "/healthz", // Re-write so that healthz isn't publicly facing
+              },
+            },
+          ],
+          rewrite: {
+            uri: "/",
+          },
+          route: [
+            // This array can't be empty
+            {
+              destination: {
+                host: service.metadata.name,
+              },
+            },
+          ],
+        },
+        {
+          match: [
+            {
+              uri: {
                 prefix: "/",
               },
             },
