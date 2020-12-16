@@ -24,6 +24,43 @@ export default async (): Promise<void> => {
     },
   });
 
+  const migrationJob = new k8s.batch.v1.Job("migrations", {
+    metadata: {
+      namespace: "applications",
+      annotations: {
+        "sidecar.istio.io/inject": "false",
+      },
+    },
+    spec: {
+      template: {
+        spec: {
+          initContainers: [
+            {
+              name: "init-cockroach",
+              image: "busybox:1.28",
+              command: [
+                "sh",
+                "-c",
+                "until wget --timeout 1 cockroachdb-public:8080/health?ready=1; do echo waiting for cockroachdb; sleep 2; done",
+              ],
+            },
+          ],
+          containers: [
+            {
+              name: "migration",
+              image: image.imageName,
+              command: ["entrypoint"],
+              args: [
+                "cockroachdb://root:@cockroachdb-public:26257/?sslmode=disable",
+              ],
+            },
+          ],
+        },
+      },
+      backoffLimit: 1,
+    },
+  });
+
   const cockroachdb = new k8s.helm.v3.Chart("cockroachdb", {
     namespace: "applications",
     fetchOpts: {
