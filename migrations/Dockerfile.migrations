@@ -1,0 +1,17 @@
+# We just need an image with curl and tar installed in it
+FROM python:3 as install
+
+WORKDIR /tmp
+RUN curl -Lo migrate.tar.gz https://github.com/golang-migrate/migrate/releases/download/v4.14.1/migrate.linux-amd64.tar.gz \
+      && tar -xzvf migrate.tar.gz -C /usr/bin \
+      && mv /usr/bin/migrate.linux-amd64 /usr/bin/migrate \
+      && rm migrate.tar.gz
+
+FROM alpine:3
+LABEL org.opencontainers.image.source https://github.com/abatilo/sudoku-race
+
+WORKDIR /migrations
+COPY ./migrations/*.sql ./
+COPY --from=install /usr/bin/migrate /usr/bin/migrate
+COPY ./migrations/entrypoint.sh /usr/bin/entrypoint
+ENTRYPOINT ["entrypoint"]
