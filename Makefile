@@ -36,6 +36,8 @@ tmp/.bootstrap: tmp/.asdf-installs tmp/.k8s-cluster tmp/.poetry-installs
 
 .PHONY: clean
 clean: ## Delete local dev environment
+	@-rm -rf .helm
+	@-rm -rf tilt_modules
 	@-rm -rf tmp
 	@-kind delete cluster --name $(PROJECT_NAME)
 
@@ -46,6 +48,10 @@ test: tmp/.poetry-installs ## Run all tests with coverage
 .PHONY: format
 format: tmp/.poetry-installs ## Format all of your python code
 	@-poetry run black .
+
+.PHONY: cockroach
+cockroach: ## Connects to in cluster CockroachDB
+	kubectl --context "kind-$(PROJECT_NAME)" run cockroachdb -it --image=cockroachdb/cockroach --rm --restart=Never -- sql --insecure --host=cockroachdb-public
 
 .PHONY: up
 up: tmp/.bootstrap ## Run a local development environment

@@ -5,3 +5,4 @@ poetry 1.1.4
 pulumi 2.15.6
 python 3.9.1
 tilt 0.18.0
+helm 3.4.1

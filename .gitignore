@@ -1,5 +1,7 @@
 /.coverage
+/.helm
 /dist/
 /operations/node_modules/
+/tilt_modules
 /tmp/
 __pycache__

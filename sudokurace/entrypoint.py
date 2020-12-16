@@ -1,8 +1,19 @@
+import sys
+from psycopg2 import connect
 from sudokurace.server.application import Application
 import uvicorn
 
 
-application = Application("sudokurace")
+try:
+    print("Attempting to connect to database")
+    conn = connect(
+        "postgres://root:@cockroachdb-public:26257/?sslmode=disable", connect_timeout=5
+    )
+except:
+    print("Could not connect to database, killing process")
+    sys.exit(-1)
+
+application = Application("sudokurace", conn)
 app = application.server()
 
 

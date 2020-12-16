@@ -27,12 +27,14 @@ export default async (): Promise<void> => {
   const migrationJob = new k8s.batch.v1.Job("migrations", {
     metadata: {
       namespace: "applications",
-      annotations: {
-        "sidecar.istio.io/inject": "false",
-      },
     },
     spec: {
       template: {
+        metadata: {
+          annotations: {
+            "sidecar.istio.io/inject": "false",
+          },
+        },
         spec: {
           restartPolicy: "Never",
           initContainers: [

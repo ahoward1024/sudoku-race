@@ -8,6 +8,7 @@ authors = ["Aaron <AaronBatilo@gmail.com>"]
 python = "^3.9"
 starlette = "^0.14.1"
 uvicorn = "^0.13.1"
+psycopg2-binary = "^2.8.6"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2"

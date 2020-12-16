@@ -20,3 +20,9 @@ spec:
             - name: http
               containerPort: 8000
               protocol: TCP
+          # livenessProbe:
+          #   httpGet:
+          #     path: /healthz
+          #     port: http
+          #   initialDelaySeconds: 10
+          #   periodSeconds: 5

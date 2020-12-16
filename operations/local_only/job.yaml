@@ -1,0 +1,23 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migration
+spec:
+  template:
+    spec:
+      initContainers:
+        - name: init-cockroach
+          image: busybox:1.28
+          command:
+            - "sh"
+            - "-c"
+            - "until wget --timeout 1 cockroachdb-public:8080/health?ready=1; do echo waiting for cockroachdb; sleep 2; done"
+      containers:
+        - name: init-migration
+          image: migration
+          command: ["entrypoint"]
+          args:
+            ["cockroachdb://root:@cockroachdb-public:26257/?sslmode=disable"]
+      restartPolicy: Never
+  backoffLimit: 1
