@@ -67,6 +67,23 @@ export default async (): Promise<void> => {
                   memory: "500Mi",
                 },
               },
+              readinessProbe: {
+                httpGet: {
+                  path: "/healthz",
+                  port: "http",
+                },
+                periodSeconds: 10,
+                failureThreshold: 2,
+              },
+              livenessProbe: {
+                httpGet: {
+                  path: "/healthz",
+                  port: "http",
+                },
+                initialDelaySeconds: 10,
+                periodSeconds: 30,
+                failureThreshold: 3,
+              },
             },
           ],
         },
