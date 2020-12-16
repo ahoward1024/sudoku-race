@@ -34,6 +34,7 @@ export default async (): Promise<void> => {
     spec: {
       template: {
         spec: {
+          restartPolicy: "Never",
           initContainers: [
             {
               name: "init-cockroach",
