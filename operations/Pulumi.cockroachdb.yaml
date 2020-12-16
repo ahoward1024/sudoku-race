@@ -1,1 +1,4 @@
 encryptionsalt: v1:AwXE5U47wGA=:v1:mWu0I2fqZ9L3TTBZ:lKnbfRYefU+nDX2HfbR+OqFdsTmB9w==
+config:
+  sudoku-race:pat:
+    secure: v1:cng7zTuQ0NnXAZwc:7chvjt9m7qm2aP7Obxbb8sbzoAa09CIR1zCgp/PFhB11XwOZBDRSyPGuXIBhBuQjih3dDOHXHeE=
