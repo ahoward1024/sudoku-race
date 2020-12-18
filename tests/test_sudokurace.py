@@ -3,7 +3,7 @@ from sudokurace.server.application import Application
 
 
 def test_name():
-    application = Application("tests")
+    application = Application("tests", None)
     app = application.server()
     client = TestClient(app)
     response = client.get("/name")
@@ -12,7 +12,7 @@ def test_name():
 
 
 def test_embed_server_version():
-    application = Application("tests")
+    application = Application("tests", None)
     app = application.server()
     client = TestClient(app)
     response = client.get("/version")
