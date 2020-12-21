@@ -7,7 +7,7 @@ authors = ["Aaron <AaronBatilo@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.9"
 starlette = "^0.14.1"
-uvicorn = "^0.13.1"
+uvicorn = "^0.13.2"
 psycopg2-binary = "^2.8.6"
 
 [tool.poetry.dev-dependencies]
