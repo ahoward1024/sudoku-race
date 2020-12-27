@@ -15,9 +15,10 @@ tmp/.asdf-installs: .tool-versions ## Install all tools through asdf-vm
 	@-asdf plugin-add istioctl || asdf install istioctl
 	@-asdf plugin-add kind     || asdf install kind
 	@-asdf plugin-add kubectl  || asdf install kubectl
+	@-asdf plugin-add python   || asdf install python
 	@-asdf plugin-add poetry   || asdf install poetry
 	@-asdf plugin-add pulumi   || asdf install pulumi
-	@-asdf plugin-add python   || asdf install python
+	@-asdf plugin-add nodejs   || asdf install nodejs
 	@-touch $@
 
 tmp/.k8s-cluster: tmp/.asdf-installs ## Create a Kubernetes cluster for local development
